@@ -1,0 +1,233 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" media="screen">
+    <title>Lakshmi Travels</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-logo">
+            <a href=""><img src="{% static 'images/home_page/main_logo.jpeg' %}" alt="Lakshmi Travels Logo"></a>
+        </div>
+
+        <label for="nav-toggler"><i class="fa fa-navicon"></i></label>
+        <input type="checkbox" id="nav-toggler" class="nav-toggler">
+
+        <nav>
+            <ul>
+                <li> <a href="">Car Rental</a> </li>
+                <li> <a href="">Weekly Trip</a> </li>
+                <li> <a href="">Tour Packages</a> </li>
+                <li> <a class="nav-cta" href="">Enquiry Now</a> </li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- hero section -->
+    <section>
+        <div class="hero-section">
+            <img src="{% static 'images/home_page/innova.png' %}" alt="">
+        </div>
+
+        <div class="text-content">
+            <h1>  Planning a Trip and Looking for a car rental service ?</h1>
+            <h2><span>Lakshmi Travels</span> provides car and minibuses for rent <span>along with driver</span>  at affordable prices. We also provides <span>weekly</span> trips from Pune to Kerala. </h2>
+            <div class="cta-button">
+                <a href="">Rent a Car Now</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- main business section -->
+
+    <div class="main-business-section">
+        <div class="tab-header">
+            <button class="active">Weekly Trip</button>
+            <button class="">Rent a Car</button>
+        </div>
+
+        <div class="section-body">
+            <div class="cab-selection">
+                <h1>Choose ride that suites you</h1>
+
+                <div class="cab-list">
+                    <div class="cab-card">
+                        <img src="{% static '/images/home_page/innova.png' %}" alt="">
+                        <h2>Innova</h2>
+                        <ul>
+                            <li>Seating Capacity: <span>6</span> </li>
+                            <li>Rate per Day :<span> 2200/-</span> </li>
+                            <li>KM allowed / Day: <span>100km</span> </li>
+                            <li>Additional KM Rate: <span>15</span> </li>
+                        </ul>
+                        <button>Book Now</button>
+                        
+
+                    </div>
+                </div>
+                <div class="cab-list">
+                    <div class="cab-card">
+                        <img src="{% static '/images/home_page/swift_dzire_2.png' %}" alt="">
+                        <h2>Innova</h2>
+                        <ul>
+                            <li>Seating Capacity: <span>6</span> </li>
+                            <li>Rate per Day :<span> 2200/-</span> </li>
+                            <li>KM allowed / Day: <span>100km</span> </li>
+                            <li>Additional KM Rate: <span>15</span> </li>
+                        </ul>
+                        <button>Book Now</button>
+                        
+
+                    </div>
+                </div>
+                <div class="cab-list">
+                    <div class="cab-card">
+                        <img src="{% static '/images/home_page/toyota_etios.png' %}" alt="">
+                        <h2>Innova</h2>
+                        <ul>
+                            <li>Seating Capacity: <span>6</span> </li>
+                            <li>Rate per Day :<span> 2200/-</span> </li>
+                            <li>KM allowed / Day: <span>100km</span> </li>
+                            <li>Additional KM Rate: <span>15</span> </li>
+                        </ul>
+                        <button>Book Now</button>
+                        
+
+                    </div>
+                </div>                <div class="cab-list">
+                    <div class="cab-card">
+                        <img src="{% static '/images/home_page/mahindra_xylo.png' %}" alt="">
+                        <h2>Innova</h2>
+                        <ul>
+                            <li>Seating Capacity: <span>6</span> </li>
+                            <li>Rate per Day :<span> 2200/-</span> </li>
+                            <li>KM allowed / Day: <span>100km</span> </li>
+                            <li>Additional KM Rate: <span>15</span> </li>
+                        </ul>
+                        <button>Book Now</button>
+                        
+
+                    </div>
+                </div>                <div class="cab-list">
+                    <div class="cab-card">
+                        <img src="{% static '/images/home_page/travelbus.png' %}" alt="">
+                        <h2>Innova</h2>
+                        <ul>
+                            <li>Seating Capacity: <span>6</span> </li>
+                            <li>Rate per Day :<span> 2200/-</span> </li>
+                            <li>KM allowed / Day: <span>100km</span> </li>
+                            <li>Additional KM Rate: <span>15</span> </li>
+                        </ul>
+                        <button>Book Now</button>
+                        
+
+                    </div>
+                </div>                <div class="cab-list">
+                    <div class="cab-card">
+                        <img src="{% static '/images/home_page/tata_indica.png' %}" alt="">
+                        <h2>Innova</h2>
+                        <ul>
+                            <li>Seating Capacity: <span>6</span> </li>
+                            <li>Rate per Day :<span> 2200/-</span> </li>
+                            <li>KM allowed / Day: <span>100km</span> </li>
+                            <li>Additional KM Rate: <span>15</span> </li>
+                        </ul>
+                        <button>Book Now</button>
+                        
+
+                    </div>
+                </div>
+            </div>
+            <div class="trip-selection">
+                <div class="sub-section">
+                <div class="back-image">
+                    <img src="{% static 'images/home_page/taxi_graphic.jpg' %}" alt="">
+                </div>      
+                <div class="trip-section-heading-content">
+                    <h1>Choose a your Date for Travel</h1>
+                    <div class="search-box">
+                        <div class="search-bar">
+                           <div class="">Pune &#8644; Kerela</div> 
+                           <form action="">
+                                <input type="date" value="">
+
+                           </form>
+                        </div>
+                        <button class="search-button">
+                            Search
+                        </button>
+                    </div>
+                </div> 
+                <div class="trip-section-body">
+                    <h2>Available Timings</h2>
+                    <div class="trip-timings-list">
+                        <div class="trip-timings-card">
+                            <img src="" alt="">
+                            <div><h3>Pune &rarr; Kerela</h3>
+                                <p>1000/-</p>
+                            </div>
+                            <div>
+                                <p>03/07/2020</p>
+                                <p>8:am</p>
+                            </div>
+                            <div class="book-button">
+                                <button>Book</button>
+                            </div>
+                    
+                        </div>
+                        <div class="trip-timings-card">
+                            <img src="" alt="">
+                            <div><h3>Pune &rarr; Kerela</h3>
+                                <p>1000/-</p>
+                            </div>
+                            <div>
+                                <p>03/07/2020</p>
+                                <p>8:am</p>
+                            </div>
+                            <div class="book-button">
+                                <button>Book</button>
+                            </div>
+                    
+                        </div>
+                        <div class="trip-timings-card">
+                            <img src="" alt="">
+                            <div><h3>Pune &rarr; Kerela</h3>
+                                <p>1000/-</p>
+                            </div>
+                            <div>
+                                <p>03/07/2020</p>
+                                <p>8:am</p>
+                            </div>
+                            <div class="book-button">
+                                <button>Book</button>
+                            </div>
+                    
+                        </div>
+                    </div>
+                </div>             
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+<!-- tour packages section -->
+
+    <section>
+        <h2>We also provide various Tour Packages</h2>
+        
+    </section>
+</body>
+
+</html>
