@@ -322,14 +322,14 @@ img{
 
 .main-business-section{
     margin-top: 100px;
-    padding-left: 2em;
-    padding-right: 2em;
+
 }
 
 .main-business-section .tab-header{
     border-bottom: 1px solid var(--clr-medium);
     margin: 0;
-    padding: 0;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 .main-business-section .tab-header button{
@@ -367,6 +367,11 @@ img{
     margin-bottom: 2em;
 }
 
+.main-business-section .cab-selection{
+    display: none;
+    padding-left: 2em;
+    padding-right: 2em;
+}
 
 .main-business-section .cab-selection .cab-list{
     display: grid;
@@ -439,13 +444,22 @@ img{
     }
 
     .main-business-section .cab-selection .cab-list{
-        grid-template-columns: repeat(5, 1fr);
-
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 1em;
 
     }
-
-    .main-business-section .cab-selection .cab-card{
-
-        
+    .main-business-section .cab-selection .cab-card img{
+        height: 150px;
+        object-fit: contain;
     }
+
+    .main-business-section .cab-selection .cab-card li{
+        font-size: .8rem;
+    }
+}
+
+
+
+.main-business-section .trip-selection .back-image img{
+    object-fit: cover;
 }
