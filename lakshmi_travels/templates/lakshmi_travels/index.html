@@ -155,15 +155,19 @@
             <div class="trip-selection">
                 <div class="sub-section">
                     <div class="back-image">
-                        <img src="{% static 'images/home_page/taxi_graphic_mobile.png' %}" alt="">
+                        <!-- <img src="{% static 'images/home_page/taxi_graphic_mobile.png' %}" alt=""> -->
                     </div>
                     <div class="trip-section-heading-content">
-                        <h1>Choose a your Date for Travel</h1>
+                        <h1>Choose a Date for your Travel</h1>
                         <div class="search-box">
                             <div class="search-bar">
-                                <div class="">Pune &#8644; Kerela</div>
+                                <div class="route">
+                                    <p>Pune &#8644; Kerela</p>
+                                </div>
+                                <!-- <div class="seperator"><span>|</span></div> -->
                                 <form action="">
-                                    <input type="date" value="">
+                                    <!-- <label for="trip_date">Select a date</label> -->
+                                    <input id="trip_date" type="date" value="">
 
                                 </form>
                             </div>
@@ -172,54 +176,58 @@
                             </button>
                         </div>
                     </div>
-                    <div class="trip-section-body">
-                        <h2>Available Timings</h2>
-                        <div class="trip-timings-list">
-                            <div class="trip-timings-card">
-                                <img src="" alt="">
-                                <div>
-                                    <h3>Pune &rarr; Kerela</h3>
-                                    <p>1000/-</p>
-                                </div>
-                                <div>
-                                    <p>03/07/2020</p>
-                                    <p>8:am</p>
-                                </div>
-                                <div class="book-button">
-                                    <button>Book</button>
-                                </div>
+                    <div class="bgd">
+                        <div class="trip-section-body">
 
-                            </div>
-                            <div class="trip-timings-card">
-                                <img src="" alt="">
-                                <div>
-                                    <h3>Pune &rarr; Kerela</h3>
-                                    <p>1000/-</p>
-                                </div>
-                                <div>
-                                    <p>03/07/2020</p>
-                                    <p>8:am</p>
-                                </div>
-                                <div class="book-button">
-                                    <button>Book</button>
-                                </div>
+                            <h2>Available Timings</h2>
+                            <div class="trip-timings-list">
+                                <div class="trip-timings-card">
+                                    <img src="{% static '/images/home_page/pune.jpg' %}" alt="">
+                                    <div class="compartment">
+                                        <h3>Pune &rarr; Kerela</h3>
+                                        <p class="price">1000/-</p>
+                                    </div>
+                                    <div class="compartment">
+                                        <p>03/07/2020</p>
+                                        <p>8:am</p>
+                                    </div>
+                                    <div class="book-button">
+                                        <button>Book</button>
+                                    </div>
 
-                            </div>
-                            <div class="trip-timings-card">
-                                <img src="" alt="">
-                                <div>
-                                    <h3>Pune &rarr; Kerela</h3>
-                                    <p>1000/-</p>
                                 </div>
-                                <div>
-                                    <p>03/07/2020</p>
-                                    <p>8:am</p>
-                                </div>
-                                <div class="book-button">
-                                    <button>Book</button>
-                                </div>
+                                <div class="trip-timings-card">
+                                    <img src="{% static '/images/home_page/pune.jpg' %}" alt="">
+                                    <div class="compartment">
+                                        <h3>Pune &rarr; Kerela</h3>
+                                        <p class="price">1000/-</p>
+                                    </div>
+                                    <div class="compartment">
+                                        <p>03/07/2020</p>
+                                        <p>8:am</p>
+                                    </div>
+                                    <div class="book-button">
+                                        <button>Book</button>
+                                    </div>
 
+                                </div>
+                                <div class="trip-timings-card">
+                                    <img src="{% static '/images/home_page/pune.jpg' %}" alt="">
+                                    <div class="compartment">
+                                        <h3>Pune &rarr; Kerela</h3>
+                                        <p class="price">1000/-</p>
+                                    </div>
+                                    <div class="compartment">
+                                        <p>03/07/2020</p>
+                                        <p>8:am</p>
+                                    </div>
+                                    <div class="book-button">
+                                        <button>Book</button>
+                                    </div>
+
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
