@@ -100,6 +100,11 @@ nav li a:hover {
     color: var(--clr-medium);
 }
 
+nav .nav-cta:hover{
+    color: white;
+    background-color: #D10000;
+}
+
 .nav-toggler:checked~nav {
     display: block;
     transform: scale(1, 1);
@@ -248,8 +253,14 @@ img{
     font-size: 1.4rem;
     font-weight: 700;
     box-shadow:0 4px 5px rgba(0, 0, 0, .25);
+    transition: 150ms ease-in;
 }
 
+
+.hero-section .text-content .cta-button a:hover{
+    background-color: #D10000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+}
 
 @media screen and (min-width:40em) {
     .hero-section{
@@ -335,12 +346,18 @@ img{
 .main-business-section .tab-header button{
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
-    background-color: black;
-    color: white;
+    color: black;
+    background-color: white;
     border: 1px solid black;
     padding: .5em 1em;
     cursor: pointer;
+    transition: 150ms ease-in;
 }
+
+.main-business-section .tab-header button:hover{
+    background-color: #E9E8E8;
+}
+
 
 .main-business-section .tab-header .left-button{
 
@@ -356,8 +373,12 @@ img{
 }
 
 .main-business-section .tab-header .active{
-    color: black;
-    background-color: white;
+    background-color: black;
+    color: white;
+}
+
+.main-business-section .tab-header .active:hover{
+    background-color: black;
 }
 
 
@@ -425,7 +446,12 @@ img{
     padding: .5em 1em;
     font-size: 1.2em;
     margin-top: 2em;
+    /* transition: 100ms ease-in; */
+    cursor: pointer;
+}
 
+.main-business-section .cab-selection .cab-card button:hover{
+    background-color: #D10000;
 }
 
 @media screen and (min-width:60em) {
@@ -534,6 +560,12 @@ img{
     border: 1px solid black;
     padding: .5em 1em; 
     box-shadow: 0px 4px 5px rgba(0, 0, 0, .25);
+    transition: 100ms ease-in;
+}
+
+
+.main-business-section .trip-section-heading-content .search-button:hover{
+    background-color: #D10000;
 }
 
 @media screen and (min-width:60em) {
@@ -658,7 +690,13 @@ img{
     border: 1px solid black;
     border-radius: 3px;
     padding: .25em  .8em;
+    transition: 100ms ease-in;
 
+}
+
+.main-business-section .trip-timings-card .book-button button:hover{
+    background-color: #D10000;
+    cursor: pointer;
 }
 
 @media screen and (min-width:60em) {
@@ -773,11 +811,22 @@ img{
     width: 35%;
     text-align: center;
     font-family: 'Roboto', sans-serif;
+    transition: 100ms ease-in;
+}
+
+.tour-packages-section .tour-packages-list .tour-package-card .button-bar a:hover{
+    color: #05FFFD;
 }
 
 .tour-packages-section .tour-packages-list .tour-package-card .button-bar .enquire_now{
     color: white;
     background-color: #00E6E4;
+
+}
+
+.tour-packages-section .tour-packages-list .tour-package-card .button-bar .enquire_now:hover{
+    color: white;
+    background-color: #05FFFD;
 }
 
 .tour-packages-section .tour-packages-list .tour-package-card img{
@@ -871,6 +920,12 @@ img{
     width: 15%;
     margin-right: 2em;
     margin-left: 1em;
+    transform: scale(1);
+    transition: transform 200ms ease-in;
+}
+
+.why-choose-us img:hover{
+    transform: scale(1.2);
 }
 
 .why-choose-us h3{
@@ -1003,8 +1058,16 @@ img{
     font-weight: 700;
     border: none;
     box-shadow: 0 4px 5px rgba(0, 0, 0, .25);
+    transition: 100ms ease-in;
+    cursor: pointer;
+
 }
 
+
+.home-contact_us .contact-us-form button:hover{
+    background-color: #D10000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+}
 @media screen and (min-width:60em) {
     .home-contact_us {
         display: flex;
@@ -1034,8 +1097,9 @@ img{
     }
 
     .home-contact_us .contact-us-form{
-        width: 600px;
+        width: 700px;
         position: absolute;
+        padding-bottom: 2em;
         
         left: 50px;
         display: flex;
@@ -1058,4 +1122,43 @@ img{
     .home-contact_us .contact-us-form .inner-container{
         width: 60%;
     }
+    .home-contact_us .contact-us-form button{
+        font-size: 1rem;
+    }
+}
+
+/* footer */
+footer{
+    background-color:white;
+    padding: 1em;
+    display: flex;
+    border-top: 1px solid black;
+    justify-content: space-evenly;
+}
+
+footer .logo-img{
+    width: 80px;
+}
+
+footer h3{
+    font-size: 1.1rem;
+}
+
+footer ul{
+    list-style: none;
+    padding: 0;
+
+}
+
+footer li{
+    margin: 0;
+}
+footer a{
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    color: var(--clr-light);
+}
+
+footer a:hover{
+    color: var(--clr-medium);
 }

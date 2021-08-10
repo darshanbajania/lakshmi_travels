@@ -58,12 +58,12 @@
 
     <div class="main-business-section">
         <div class="tab-header">
-            <button class="left-button active">Weekly Trip</button>
-            <button class="right-button">Rent a Car</button>
+            <button  class="left-button tablinks" onclick="openCity(event, 'weeklytrip')">Weekly Trip</button>
+            <button class="right-button tablinks" id="defaultOpen" onclick="openCity(event, 'carrent')">Rent a Car</button>
         </div>
 
         <div class="section-body">
-            <div class="cab-selection">
+            <div id="carrent" class="cab-selection tabcontent">
                 <h1>Choose the ride that suites you</h1>
 
                 <div class="cab-list">
@@ -152,7 +152,7 @@
                     </div>
                 </div>
             </div>
-            <div class="trip-selection">
+            <div id="weeklytrip" class="trip-selection tabcontent">
                 <div class="sub-section">
                     <div class="back-image">
                         <!-- <img src="{% static 'images/home_page/taxi_graphic_mobile.png' %}" alt=""> -->
@@ -359,18 +359,18 @@
 
     <footer>
         <div class="">
-            <img src="{% static 'images/home_page/main_logo.jpeg' %}" alt="">
-            <p> &#9743; 9972457774 / 7356213451</p>
+            <img class="logo-img" src="{% static 'images/home_page/main_logo.jpeg' %}" alt="">
+            <p> &#9743; 9972457774 <br> 7356213451</p>
         </div>
 
         <div>
             <h3>Site Map</h3>
             <ul>
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Enquiry</li>
-                <li>Tour Packages</li>
-                <li>Contact Us</li>
+                <li><a href=""> Home</a></li>
+                <li> <a href="">About Us</a> </li>
+                <li><a href="">Enquiry</a> </li>
+                <li><a href="">Tour Packages</a> </li>
+                <li><a href="">Contact Us</a></li>
 
 
             </ul>
@@ -378,11 +378,11 @@
         <div>
             <h3>Others</h3>
             <ul>
-                <li>Popular Tours</li>
-                <li>All Tours</li>
-                <li>Featured</li>
-                <li>Prices</li>
-                <li>FAQ’s</li>
+                <li><a href="">Popular Tours</a> </li>
+                <li><a href="">All Tours</a> </li>
+                <li><a href="">Featured</a> </li>
+                <li><a href="">Prices</a></li>
+                <li><a href="">FAQ’s</a> </li>
 
 
             </ul>
@@ -392,5 +392,31 @@
 
 
 </body>
+
+<script>
+function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+</script>
 
 </html>
