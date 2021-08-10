@@ -837,3 +837,225 @@ img{
 
 
 }
+
+
+/* why choose us section */
+
+.why-choose-us{
+    width: 100%;
+    background-color: #FFF172;
+    margin-top: 0;
+    padding-top: 2em;
+    margin-bottom: 2em;
+}
+
+.why-choose-us h1{
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 0em;
+}
+
+.why-choose-us .features{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.why-choose-us .feature-item{
+    width: 100%;
+    text-align: center;
+    display:flex;
+    margin-bottom: 1.5em;
+}
+
+.why-choose-us img{
+    width: 15%;
+    margin-right: 2em;
+    margin-left: 1em;
+}
+
+.why-choose-us h3{
+    font-size: 1rem;
+    text-align: left;
+    padding-right: 1em;
+}
+
+
+@media screen and (min-width:60em) {
+
+    .why-choose-us {
+        padding: 2em;
+    }
+    .why-choose-us h1{
+        font-size: 2.5rem;
+    }
+
+    .why-choose-us .features{
+        justify-content: space-evenly;
+        padding-top: 1em;
+    }
+
+    .why-choose-us .feature-item{
+        width: 33.33%;
+        display: block;
+        text-align: center;
+        margin-bottom: 3em;
+        margin-left: 0;
+        /* border: 1px solid blue; */
+    }
+
+    .why-choose-us img{
+        margin: 0;
+        padding: 0;
+    }
+    .why-choose-us h3{
+        text-align: center;
+        padding-right: 0;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 1.2rem;
+    }
+}
+
+
+/* contact form section */
+
+.home-contact_us{
+    padding: 1em;
+    position: relative;
+}
+
+.home-contact_us .left-section{
+    background-color: #4D4C4C;
+    width: 80%;
+    z-index: 300;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .25);
+}
+
+
+.home-contact_us .left-section img{
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.home-contact_us .left-section .text-content{
+    padding: 0 2em;
+    margin-top: 1em;
+    padding-bottom: 1em;
+}
+.home-contact_us .left-section  .text-content p{
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+}
+
+
+.home-contact_us .contact-us-form{
+    width: 100%;
+    position: relative;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, .35);
+    top: -20px;
+    padding: .1em 0;
+
+}
+
+.home-contact_us .contact-us-form h1{
+    font-size: 1.8rem;
+    text-align: center;
+    margin-top: 1.5em;
+    letter-spacing: 5px;
+    font-weight: 700;
+}
+
+
+.home-contact_us .contact-us-form .form-item{
+    display: flex;
+    justify-content: space-between;
+    padding:.5em 1em;
+}
+
+.home-contact_us .contact-us-form label{
+    font-weight: 700;
+}
+
+.home-contact_us .contact-us-form input{
+    background-color: #E9E8E8;
+    border: none;
+    padding: .5em;
+    width: 50%;
+}
+
+.home-contact_us .contact-us-form textarea{
+    width: 50%;
+    background-color: #E9E8E8;
+    padding: .5em;
+}
+
+.home-contact_us .contact-us-form button{
+    margin: 1em auto;
+    display: block;
+    background-color: var(--clr-cta);
+    color: white;
+    padding: .5em 1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, .25);
+}
+
+@media screen and (min-width:60em) {
+    .home-contact_us {
+        display: flex;
+        width: 60%;
+        margin: 0 auto;
+        position: relative;
+        height: fit-content;
+        margin: 5em auto;
+    }
+
+    .home-contact_us .left-section{
+        width: 40%;
+        background-color: white;
+        border: 1px solid var(--clr-medium);
+        margin: 0;
+        padding: 0;
+    }
+
+    .home-contact_us .left-section img{
+        width: 100%;
+        margin: 0;
+    }
+
+    .home-contact_us .left-section .text-content p{
+        color: var(--clr-medium);
+        font-size: .8rem;
+    }
+
+    .home-contact_us .contact-us-form{
+        width: 600px;
+        position: absolute;
+        
+        left: 50px;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .home-contact_us .contact-us-form .form-item{
+        flex-direction: column;
+    }
+    .home-contact_us .contact-us-form label{
+        margin-bottom: 1em;
+    }
+
+    .home-contact_us .contact-us-form input,
+    .home-contact_us .contact-us-form textarea{
+        width: 100%;
+        height: 30px;
+        border: none;
+    }
+    .home-contact_us .contact-us-form .inner-container{
+        width: 60%;
+    }
+}
