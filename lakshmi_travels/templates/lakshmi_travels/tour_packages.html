@@ -31,10 +31,10 @@
 
         <nav>
             <ul>
-                <li> <a href="#main-business-section">Car Rental</a> </li>
-                <li> <a href="#hero">Weekly Trip</a> </li>
+                <li> <a href="{% url 'lakshmi_travels:home_view' %}#main-business-section">Car Rental</a> </li>
+                <li> <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a> </li>
                 <li> <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a> </li>
-                <li> <a class="nav-cta" href="">Enquiry Now</a> </li>
+                <li> <a class="nav-cta" href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry Now</a> </li>
             </ul>
         </nav>
 
@@ -297,10 +297,10 @@
         <div>
             <h3>Site Map</h3>
             <ul>
-                <li><a href=""> Home</a></li>
-                <li> <a href="">About Us</a> </li>
-                <li><a href="">Enquiry</a> </li>
-                <li><a href="">Tour Packages</a> </li>
+                <li><a href="{% url 'lakshmi_travels:home_view' %}"> Home</a></li>
+                <li> <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a> </li>
+                <li><a href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry</a> </li>
+                <li><a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a> </li>
                 <li><a href="">Contact Us</a></li>
 
 

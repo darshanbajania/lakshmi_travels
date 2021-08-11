@@ -12,6 +12,8 @@ app_name = 'lakshmi_travels'
 urlpatterns = [
     path('', views.Home, name='home_view'),
     path('tour_packages/', views.TourPackagesView, name='tour_packages'),
+    path('daily_trip/', views.DailyTripView, name='daily_trip'),
+    path('enquiry/', views.EnquiryPageview, name='enquiry_page'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

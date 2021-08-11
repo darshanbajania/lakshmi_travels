@@ -333,6 +333,7 @@ img{
 
 .main-business-section{
     margin-top: 100px;
+    position: relative;
 
 }
 
@@ -547,6 +548,12 @@ img{
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
     color: var(--clr-medium);
+    background-color: white;
+}
+
+.main-business-section .trip-section-heading-content .search-box select{
+    background-color: white;
+    border: none;
 }
 
 .main-business-section .trip-section-heading-content .search-button{
@@ -628,12 +635,13 @@ img{
     padding:0 1.5em;
     margin-top: 2em;
     display: block;
+    position: relative;
 }
 
 .main-business-section .trip-section-body h2{
     font-size: 1.8rem;
     display: inline-block;
-    /* margin-top: 2em; */
+    margin-top: 2em;
 }
 
 .main-business-section .trip-timings-list .trip-timings-list{
@@ -1010,7 +1018,7 @@ img{
 .home-contact_us .contact-us-form{
     width: 100%;
     position: relative;
-    box-shadow: 0 4px 5px rgba(0, 0, 0, .35);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
     top: -20px;
     padding: .1em 0;
 

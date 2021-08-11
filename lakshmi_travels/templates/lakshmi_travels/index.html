@@ -15,7 +15,8 @@
 <body>
     <header>
         <div class="home_image">
-            <a href="{% url 'lakshmi_travels:home_view' %}"><img src="{% static 'images/home_page/main_logo.jpeg' %}" alt="Lakshmi Travels Logo"></a>
+            <a href="{% url 'lakshmi_travels:home_view' %}"><img src="{% static 'images/home_page/main_logo.jpeg' %}"
+                    alt="Lakshmi Travels Logo"></a>
         </div>
 
         <label for="nav-toggler"><i class="fa fa-navicon"></i></label>
@@ -23,10 +24,10 @@
 
         <nav>
             <ul>
-                <li> <a href="#main-business-section">Car Rental</a> </li>
-                <li> <a href="#hero">Weekly Trip</a> </li>
+                <li> <a href="{% url 'lakshmi_travels:home_view' %}#main-business-section">Car Rental</a> </li>
+                <li> <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a> </li>
                 <li> <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a> </li>
-                <li> <a class="nav-cta" href="">Enquiry Now</a> </li>
+                <li> <a class="nav-cta" href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry Now</a> </li>
             </ul>
         </nav>
 
@@ -35,7 +36,7 @@
 
     <!-- hero section -->
     <section>
-        <div  class="hero-section">
+        <div class="hero-section">
             <div class="hero-section-img">
                 <img src="{% static 'images/home_page/innova.png' %}" alt="">
             </div>
@@ -45,7 +46,7 @@
                 <h2><span>Lakshmi Travels</span> provides car and minibuses for rent <span>along with driver</span> at
                     affordable prices. We also provides <span>weekly trips</span> from Pune to Kerala. </h2>
                 <div id="hero" class="cta-button">
-                    <a href="">Rent a Car Now</a>
+                    <a href="{% url 'lakshmi_travels:home_view' %}#main-business-section">Rent a Car Now</a>
                 </div>
             </div>
         </div>
@@ -55,10 +56,11 @@
 
     <!-- main business section -->
 
-    <div id="main-business-section" class="main-business-section">
+    <div id="main-business-section" name="main-business-section" class="main-business-section">
         <div class="tab-header">
-            <button  class="left-button tablinks" onclick="openCity(event, 'weeklytrip')">Weekly Trip</button>
-            <button class="right-button tablinks" id="defaultOpen" onclick="openCity(event, 'carrent')">Rent a Car</button>
+            <button class="left-button tablinks" onclick="openCity(event, 'weeklytrip')">Daily Trip</button>
+            <button class="right-button tablinks" id="defaultOpen" onclick="openCity(event, 'carrent')">Rent a
+                Car</button>
         </div>
 
         <div class="section-body">
@@ -158,22 +160,31 @@
                     </div>
                     <div class="trip-section-heading-content">
                         <h1>Choose a Date for your Travel</h1>
-                        <div class="search-box">
-                            <div class="search-bar">
-                                <div class="route">
-                                    <p>Pune &#8644; Kerela</p>
-                                </div>
-                                <!-- <div class="seperator"><span>|</span></div> -->
-                                <form action="">
-                                    <!-- <label for="trip_date">Select a date</label> -->
-                                    <input id="trip_date" type="date" value="">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="search-box">
+                                <div class="search-bar">
 
-                                </form>
+                                    <div class="route">
+                                        <select name="routes" id="routes">
+                                            <option value="route1">Pune to Kerala</option>
+                                            <option value="route2">Kerala to Pune</option>
+
+                                        </select>
+                                    </div>
+
+                                    <input id="trip_date" type="date" value="" required>
+
+
+
+                                </div>
+                                <button type="submit" class="search-button">
+                                    Search
+                                </button>
                             </div>
-                            <button class="search-button">
-                                Search
-                            </button>
-                        </div>
+
+                        </form>
+
                     </div>
                     <div class="bgd">
                         <div class="trip-section-body">
@@ -327,26 +338,26 @@
 
             <div class="contact-us-form">
                 <div class="inner-container">
-                <h1>Get in Touch</h1>
+                    <h1>Get in Touch</h1>
 
-                <form action="">
-                    <div class="form-item">
-                        <label for="">Name</label>
-                        <input type="text" placeholder="Your Name">
+                    <form action="">
+                        <div class="form-item">
+                            <label for="">Name</label>
+                            <input type="text" placeholder="Your Name">
 
-                    </div>
-                    <div class="form-item">
-                        <label for="">Email Id</label>
-                        <input type="text" placeholder="Your Email Id">
+                        </div>
+                        <div class="form-item">
+                            <label for="">Email Id</label>
+                            <input type="text" placeholder="Your Email Id">
 
-                    </div>
-                    <div class="form-item">
-                        <label for="">Message</label>
-                        <textarea name="" id="" cols="20" rows="5" placeholder="message"></textarea>
+                        </div>
+                        <div class="form-item">
+                            <label for="">Message</label>
+                            <textarea name="" id="" cols="20" rows="5" placeholder="message"></textarea>
 
-                    </div>
-                    <button type="submit">Send</button>
-                </form>
+                        </div>
+                        <button type="submit">Send</button>
+                    </form>
 
                 </div>
 
@@ -365,10 +376,10 @@
         <div>
             <h3>Site Map</h3>
             <ul>
-                <li><a href=""> Home</a></li>
-                <li> <a href="">About Us</a> </li>
-                <li><a href="">Enquiry</a> </li>
-                <li><a href="">Tour Packages</a> </li>
+                <li><a href="{% url 'lakshmi_travels:home_view' %}"> Home</a></li>
+                <li> <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a> </li>
+                <li><a href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry</a> </li>
+                <li><a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a> </li>
                 <li><a href="">Contact Us</a></li>
 
 
@@ -393,28 +404,28 @@
 </body>
 
 <script>
-function openCity(evt, cityName) {
-  // Declare all variables
-  var i, tabcontent, tablinks;
+    function openCity(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
 
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
 
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
 
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
 
 </script>
 
