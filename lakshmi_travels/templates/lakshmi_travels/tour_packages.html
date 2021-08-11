@@ -1,0 +1,331 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" media="screen">
+
+    <link rel="stylesheet" href="{% static 'css/tour_packages.css' %}" type="text/css" media="screen">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Tour Packages</title>
+</head>
+
+<body>
+    <header>
+        <div class="home_image">
+            <a href="{% url 'lakshmi_travels:home_view' %}"><img src="{% static 'images/home_page/main_logo.jpeg' %}"
+                    alt="Lakshmi Travels Logo"></a>
+        </div>
+
+        <label for="nav-toggler"><i class="fa fa-navicon"></i></label>
+        <input type="checkbox" id="nav-toggler" class="nav-toggler">
+
+        <nav>
+            <ul>
+                <li> <a href="#main-business-section">Car Rental</a> </li>
+                <li> <a href="#hero">Weekly Trip</a> </li>
+                <li> <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a> </li>
+                <li> <a class="nav-cta" href="">Enquiry Now</a> </li>
+            </ul>
+        </nav>
+
+    </header>
+    <section>
+        <div class="tp-hero-section">
+
+            <picture>
+                <source media="(max-width: 799px)" srcset="{% static 'images/tour_packages/hero-back-mobile.jpg' %}">
+                <source media="(min-width: 60em)" srcset="{% static 'images/tour_packages/hero-back-desktop.jpg' %}">
+                <img src="{% static 'images/tour_packages/hero-back-desktop.jpg' %}"
+                    alt="Chris standing up holding his daughter Elva">
+            </picture>
+            <div class="text-content">
+                <h1>Tour Packages</h1>
+                <p>We provide travel services all over India. With <span>LAKSHMI TRAVELS</span> you are sure to get true
+                    value for
+                    the money spent on your holidays. Our travel advisors ensure for best deals followed by high service
+                    standard
+                </p>
+
+                <a href="">Make an enquiry Now</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="tour-packages-section">
+            <h2>We also provide various Tour Packages</h2>
+            <div class="tour-packages-list">
+                <div class="tour-package-card">
+                    <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
+                    <h2>Leh Ladakh</h2>
+                    <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                    <p class="time">1 Week</p>
+
+                    <div class="button-bar">
+                        <a href="" class="details">Details</a>
+                        <a href="" class="enquire_now">Enquire Now</a>
+                    </div>
+                </div>
+                <div class="tour-package-card">
+                    <img src="{% static 'images/home_page/kerela_tour.jpg' %}" alt="">
+                    <h2>Leh Ladakh</h2>
+                    <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                    <p class="time">1 Week</p>
+
+                    <div class="button-bar">
+                        <a href="" class="details">Details</a>
+                        <a href="" class="enquire_now">Enquire Now</a>
+                    </div>
+                </div>
+                <div class="tour-package-card">
+                    <img src="{% static 'images/home_page/manali_tour.jpg' %}" alt="">
+                    <h2>Leh Ladakh</h2>
+                    <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                    <p class="time">1 Week</p>
+
+                    <div class="button-bar">
+                        <a href="" class="details">Details</a>
+                        <a href="" class="enquire_now">Enquire Now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section>
+        <div class="wonderful-journey">
+            <picture>
+                <source media="(max-width: 799px)"
+                    srcset="{% static 'images/tour_packages/wonderful-journey-mobile.jpg' %}">
+                <source media="(min-width: 60em)"
+                    srcset="{% static 'images/tour_packages/wonderful-journey-desktop.jpg' %}">
+                <img src="{% static 'images/tour_packages/wonderful-journey-desktop.jpg' %}"
+                    alt="Chris standing up holding his daughter Elva">
+            </picture>
+            <div>
+                <h1></h1>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="other-destinations">
+            <h1>Check Out These Destinations</h1>
+            <div class="tour-packages-section">
+                <div class="tour-packages-list">
+                    <div class="tour-package-card">
+                        <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
+                        <h2>Leh Ladakh</h2>
+                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                        <p class="time">1 Week</p>
+
+                        <div class="button-bar">
+                            <a href="" class="details">Details</a>
+                            <a href="" class="enquire_now">Enquire Now</a>
+                        </div>
+                    </div>
+                    <div class="tour-package-card">
+                        <img src="{% static 'images/home_page/kerela_tour.jpg' %}" alt="">
+                        <h2>Leh Ladakh</h2>
+                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                        <p class="time">1 Week</p>
+
+                        <div class="button-bar">
+                            <a href="" class="details">Details</a>
+                            <a href="" class="enquire_now">Enquire Now</a>
+                        </div>
+                    </div>
+                    <div class="tour-package-card">
+                        <img src="{% static 'images/home_page/manali_tour.jpg' %}" alt="">
+                        <h2>Leh Ladakh</h2>
+                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                        <p class="time">1 Week</p>
+
+                        <div class="button-bar">
+                            <a href="" class="details">Details</a>
+                            <a href="" class="enquire_now">Enquire Now</a>
+                        </div>
+                    </div>
+                    <div class="tour-package-card">
+                        <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
+                        <h2>Leh Ladakh</h2>
+                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                        <p class="time">1 Week</p>
+
+                        <div class="button-bar">
+                            <a href="" class="details">Details</a>
+                            <a href="" class="enquire_now">Enquire Now</a>
+                        </div>
+                    </div>
+                    <div class="tour-package-card">
+                        <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
+                        <h2>Leh Ladakh</h2>
+                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                        <p class="time">1 Week</p>
+
+                        <div class="button-bar">
+                            <a href="" class="details">Details</a>
+                            <a href="" class="enquire_now">Enquire Now</a>
+                        </div>
+                    </div>
+                    <div class="tour-package-card">
+                        <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
+                        <h2>Leh Ladakh</h2>
+                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                        <p class="time">1 Week</p>
+
+                        <div class="button-bar">
+                            <a href="" class="details">Details</a>
+                            <a href="" class="enquire_now">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- <a class="tour-packages-link" href="">See more></a> -->
+
+            </div>
+
+        </div>
+    </section>
+    <section>
+        <div class="how-it-works">
+            <picture>
+                <source media="(max-width: 799px)" srcset="{% static 'images/tour_packages/how-it-works-mobile.jpg' %}">
+                <source media="(min-width: 60em)" srcset="{% static 'images/tour_packages/how-it-works-desktop.jpg' %}">
+                <img src="{% static 'images/tour_packages/how-it-works-desktop.jpg' %}"
+                    alt="Chris standing up holding his daughter Elva">
+            </picture>
+        </div>
+
+    </section>
+    <section>
+        <div class="booking-form">
+            <h1>Let’s Start by making an Enquiry </h1>
+            <div class=" container">
+                <form class="row g-3">
+                    <div class="col-md-4">
+                        <label for="inputdestination" class="form-label">Destination</label>
+                        <input type="text" class="form-control" id="inputdestination" placeholder="Jaipur, Rajasthan">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputstartdate" class="form-label">Journey Start</label>
+                        <input type="date" class="form-control" id="inputstartdate">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputdays" class="form-label">Days</label>
+                        <input type="number" class="form-control" id="inputdays" placeholder="5">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputadults" class="form-label">Adults</label>
+                        <input type="number" class="form-control" id="inputadults" placeholder="">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputchildren" class="form-label">Children</label>
+                        <input type="number" class="form-control" id="inputchildren" placeholder="">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="inputAddress" class="form-label">Your Location</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra">
+                    </div>
+                    <div class="col-12">
+                        <label for="exampleFormControlTextarea1" class="form-label">Tour Details</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Please tell us your tour requirements"></textarea>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="inputname" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="inputname" placeholder="Full Name">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputphone" class="form-label">Phone Number</label>
+                        <input type="number" class="form-control" id="inputphone">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="inputEmail4">
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit" class="">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+    <section>
+        <div class="end-banner">
+            <picture>
+                <source media="(max-width: 799px)"
+                    srcset="{% static 'images/tour_packages/banner-waiting-for-mobile.jpg' %}">
+                <source media="(min-width: 60em)"
+                    srcset="{% static 'images/tour_packages/banner-waiting-for-desktop.jpg' %}">
+                <img src="{% static 'images/tour_packages/banner-waiting-for-mobile.jpg' %}"
+                    alt="Chris standing up holding his daughter Elva">
+            </picture>
+
+
+            <div class="text-content">
+                <h1>So what are you waiting for ?</h1>
+                <p>get started with your journey with us today</p>
+
+                <a href="">ENQUIRE NOW</a>
+            </div>
+        </div>
+
+    </section>
+    <footer>
+        <div class="">
+            <img class="logo-img" src="{% static 'images/home_page/main_logo.jpeg' %}" alt="">
+            <p> &#9743; 9972457774 <br> 7356213451</p>
+        </div>
+
+        <div>
+            <h3>Site Map</h3>
+            <ul>
+                <li><a href=""> Home</a></li>
+                <li> <a href="">About Us</a> </li>
+                <li><a href="">Enquiry</a> </li>
+                <li><a href="">Tour Packages</a> </li>
+                <li><a href="">Contact Us</a></li>
+
+
+            </ul>
+        </div>
+        <div>
+            <h3>Others</h3>
+            <ul>
+                <li><a href="">Popular Tours</a> </li>
+                <li><a href="">All Tours</a> </li>
+                <li><a href="">Featured</a> </li>
+                <li><a href="">Prices</a></li>
+                <li><a href="">FAQ’s</a> </li>
+
+
+            </ul>
+        </div>
+    </footer>
+
+
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
+
+</html>
