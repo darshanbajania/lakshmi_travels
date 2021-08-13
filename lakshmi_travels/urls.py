@@ -14,6 +14,11 @@ urlpatterns = [
     path('tour_packages/', views.TourPackagesView, name='tour_packages'),
     path('daily_trip/', views.DailyTripView, name='daily_trip'),
     path('enquiry/', views.EnquiryPageview, name='enquiry_page'),
+    path('login/', views.LoginView, name='login_page'),
+    path('register/', views.RegisterView, name='register_page'),
+    path('customer_dashboard/', views.CustomerDashboardView, name='customer_dashboard_page'),
+    path('admin_dashboard/', views.AdminDashBoardView, name='admin_dashboard'),
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
