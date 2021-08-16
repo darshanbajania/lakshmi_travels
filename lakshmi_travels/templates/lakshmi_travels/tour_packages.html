@@ -35,6 +35,30 @@
                 <li> <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a> </li>
                 <li> <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a> </li>
                 <li> <a class="nav-cta" href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry Now</a> </li>
+                          {% if user.is_authenticated %}
+
+          <li>
+            <div class="dropdown">
+              <span>{{user.username|truncatechars:9 }}</span>
+              <div class="dropdown-content">
+              <ul>
+                <li><a href="">Dashboard</a></li>
+                <li>
+                  <a href="{% url 'lakshmi_travels:logout_url' %}">Logout</a>
+                </li>
+              </ul>
+              </div>
+            </div>
+          </li>
+          {% else %}
+          <li>
+            <a href="{% url 'lakshmi_travels:login_page' %}">Login</a>
+          </li>
+          <li>
+            <a href="{% url 'lakshmi_travels:register_page' %}">Sign Up</a>
+          </li>
+          {% endif %}
+
             </ul>
         </nav>
 
