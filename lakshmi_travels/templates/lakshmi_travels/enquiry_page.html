@@ -35,29 +35,29 @@
                 <li> <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a> </li>
                 <li> <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a> </li>
                 <li> <a class="nav-cta" href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry Now</a> </li>
-                          {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
 
-          <li>
-            <div class="dropdown">
-              <span>{{user.username|truncatechars:9 }}</span>
-              <div class="dropdown-content">
-              <ul>
-                <li><a href="">Dashboard</a></li>
                 <li>
-                  <a href="{% url 'lakshmi_travels:logout_url' %}">Logout</a>
+                    <div class="dropdown">
+                        <span>{{user.username|truncatechars:9 }}</span>
+                        <div class="dropdown-content">
+                            <ul>
+                                <li><a href="">Dashboard</a></li>
+                                <li>
+                                    <a href="{% url 'lakshmi_travels:logout_url' %}">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </li>
-              </ul>
-              </div>
-            </div>
-          </li>
-          {% else %}
-          <li>
-            <a href="{% url 'lakshmi_travels:login_page' %}">Login</a>
-          </li>
-          <li>
-            <a href="{% url 'lakshmi_travels:register_page' %}">Sign Up</a>
-          </li>
-          {% endif %}
+                {% else %}
+                <li>
+                    <a href="{% url 'lakshmi_travels:login_page' %}">Login</a>
+                </li>
+                <li>
+                    <a href="{% url 'lakshmi_travels:register_page' %}">Sign Up</a>
+                </li>
+                {% endif %}
 
             </ul>
         </nav>
@@ -66,71 +66,110 @@
 
     <section>
         <div class="enquiry-form">
+            {% if booking_type == 'rental_car' %}
+            <h1>Send us your request for Renting a Car</h1>
+            {% else %}
             <h1>Tell us your travel requirements!</h1>
+            {% endif %}
             <div class=" container">
                 <form class="row g-3">
+                    {% if booking_type == 'rental_car' %}
+                    <div class="col-md-4">
+                        <label for="inputdestination" class="form-label">Car Model</label>
+                        <input type="text" class="form-control" id="inputdestination" value="{{ selected_car }}" placeholder="Innova" readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputAddress" class="form-label">Your Location</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputstartdate" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="inputstartdate" required>
+                    </div>
+
+
+                    {% else %}
+                    
                     <div class="form-check col-md-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexCheckcabbooking" value="option1" checked>
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexCheckcabbooking"
+                            value="option1" checked>
                         <label class="form-check-label" for="flexCheckcabbooking">
                             Book A Cab
                         </label>
                     </div>
                     <div class="form-check col-md-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexChecktripbooking" value="option1" >
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexChecktripbooking"
+                            value="option1" required>
                         <label class="form-check-label" for="flexChecktripbooking">
                             Book a Trip
                         </label>
                     </div>
                     <div class="form-check col-md-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexChecktripbooking" value="option1" >
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexChecktripbooking"
+                            value="option1" required>
                         <label class="form-check-label" for="flexChecktourbooking">
                             Book a Tour Package
                         </label>
                     </div>
+                    
                     <div class="col-md-4">
                         <label for="inputdestination" class="form-label">Destination</label>
-                        <input type="text" class="form-control" id="inputdestination" placeholder="Jaipur, Rajasthan">
+                        <input type="text" class="form-control" id="inputdestination" placeholder="Jaipur, Rajasthan" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputstartdate" class="form-label">Journey Start</label>
-                        <input type="date" class="form-control" id="inputstartdate">
+                        <input type="date" class="form-control" id="inputstartdate" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputdays" class="form-label">Days</label>
-                        <input type="number" class="form-control" id="inputdays" placeholder="5">
+                        <input type="number" class="form-control" id="inputdays" placeholder="5" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputadults" class="form-label">Adults</label>
-                        <input type="number" class="form-control" id="inputadults" placeholder="">
+                        <input type="number" class="form-control" id="inputadults" placeholder="" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputchildren" class="form-label">Children</label>
-                        <input type="number" class="form-control" id="inputchildren" placeholder="">
+                        <input type="number" class="form-control" id="inputchildren" placeholder="" required>
                     </div>
 
                     <div class="col-md-4">
                         <label for="inputAddress" class="form-label">Your Location</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra">
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra" required>
                     </div>
                     <div class="col-12">
                         <label for="exampleFormControlTextarea1" class="form-label">Tour Details</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="Please tell us your tour requirements"></textarea>
+                            placeholder="Please tell us your tour requirements"></textarea required>
                     </div>
-
+                    {% endif %}
+                    {% if user.is_authenticated %}
                     <div class="col-md-4">
                         <label for="inputname" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="inputname" placeholder="Full Name">
+                        <input type="text" class="form-control" id="inputname" value="{{user.username}}" placeholder="Full Name" readonly>
                     </div>
                     <div class="col-md-4">
                         <label for="inputphone" class="form-label">Phone Number</label>
-                        <input type="number" class="form-control" id="inputphone">
+                        <input type="number" class="form-control" id="inputphone" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4">
+                        <input type="email" class="form-control" value="{{user.email}}" id="inputEmail4" readonly>
                     </div>
-
+                    {% else %}
+                    <div class="col-md-4">
+                        <label for="inputname" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="inputname" value="{{user.username}}" placeholder="Full Name" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputphone" class="form-label">Phone Number</label>
+                        <input type="number" class="form-control" id="inputphone" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input type="email" class="form-control" value="{{user.email}}" id="inputEmail4" required>
+                    </div>
+                    {% endif %}
                     <div class="col-12">
                         <button type="submit" class="">Send</button>
                     </div>

@@ -23,9 +23,31 @@ import json
 
 def Home(request):
     all_rental_cars = RentalCars.objects.all()
+    all_daily_trips = TripDetails.objects.all()
+    first_few_trips = all_daily_trips[:4]
+    booking_type = 'tour'
+
+    print(first_few_trips)
+    if request.method == 'POST':
+        booking_request_rental_car_id = request.POST.get('car_rental_id')
+        trip_booking_request_id = request.POST.get('trip_id')
+        if booking_request_rental_car_id != None:
+            booking_type = 'rental_car'
+            base_url = reverse('lakshmi_travels:enquiry_page')
+            query_string = urlencode({'rental_car_id': booking_request_rental_car_id, 'booking_type': booking_type})
+            url = '{}?{}'.format(base_url, query_string)
+        elif trip_booking_request_id != None:
+            booking_type = 'trip'
+            base_url = reverse('lakshmi_travels:enquiry_page')
+            query_string = urlencode({'rental_car_id': trip_booking_request_id, 'booking_type': booking_type})
+            url = '{}?{}'.format(base_url, query_string)            
+        # print(url)
+        return redirect(url)
+
 
     context = {
         'all_rental_cars': all_rental_cars,
+        'first_few_trips': first_few_trips,
     }
 
     return render(request, 'lakshmi_travels/index.html', context)
@@ -34,10 +56,24 @@ def TourPackagesView(request):
     return render(request, 'lakshmi_travels/tour_packages.html')
 
 def DailyTripView(request):
+
     return render(request, 'lakshmi_travels/daily_trip.html')
 
 def EnquiryPageview(request):
-    return render(request, 'lakshmi_travels/enquiry_page.html')
+    booking_type = request.GET.get('booking_type')
+    
+    print(booking_type)
+    # car_request_id = request.GET.get('rental_car_id')
+    car_request_id = '1'
+    selected_car = RentalCars.objects.all().filter(car_id = car_request_id).first()
+    if selected_car!= None:
+        booking_type = 'rental_car'
+    
+    context = {
+        'booking_type': booking_type,
+        'selected_car': selected_car,
+    }
+    return render(request, 'lakshmi_travels/enquiry_page.html', context)
 
 def LoginView(request):
     if request.method == 'POST':

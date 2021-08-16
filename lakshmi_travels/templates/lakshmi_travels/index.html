@@ -2,155 +2,128 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/index.css' %}"
-      type="text/css"
-      media="screen"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <title>Lakshmi Travels</title>
-  </head>
 
-  <body>
-    <header>
-      <div class="home_image">
-        <a href="{% url 'lakshmi_travels:home_view' %}"
-          ><img
-            src="{% static 'images/home_page/main_logo.jpeg' %}"
-            alt="Lakshmi Travels Logo"
-        /></a>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" media="screen" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <title>Lakshmi Travels</title>
+</head>
 
-      <label for="nav-toggler"><i class="fa fa-navicon"></i></label>
-      <input type="checkbox" id="nav-toggler" class="nav-toggler" />
+<body>
+  <header>
+    <div class="home_image">
+      <a href="{% url 'lakshmi_travels:home_view' %}"><img src="{% static 'images/home_page/main_logo.jpeg' %}"
+          alt="Lakshmi Travels Logo" /></a>
+    </div>
 
-      <nav>
-        <ul>
-          <li>
-            <a
-              href="{% url 'lakshmi_travels:home_view' %}#main-business-section"
-              >Car Rental</a
-            >
-          </li>
-          <li>
-            <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a>
-          </li>
-          <li>
-            <a href="{% url 'lakshmi_travels:tour_packages' %}"
-              >Tour Packages</a
-            >
-          </li>
-          <li>
-            <a class="nav-cta" href="{% url 'lakshmi_travels:enquiry_page' %}"
-              >Enquiry Now</a
-            >
-          </li>
-          {% if user.is_authenticated %}
+    <label for="nav-toggler"><i class="fa fa-navicon"></i></label>
+    <input type="checkbox" id="nav-toggler" class="nav-toggler" />
 
-          <li>
-            <div class="dropdown">
-              <span>{{user.username|truncatechars:9 }}</span>
-              <div class="dropdown-content">
+    <nav>
+      <ul>
+        <li>
+          <a href="{% url 'lakshmi_travels:home_view' %}#main-business-section">Car Rental</a>
+        </li>
+        <li>
+          <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a>
+        </li>
+        <li>
+          <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a>
+        </li>
+        <li>
+          <a class="nav-cta" href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry Now</a>
+        </li>
+        {% if user.is_authenticated %}
+
+        <li>
+          <div class="dropdown">
+            <span>{{user.username|truncatechars:9 }}</span>
+            <div class="dropdown-content">
               <ul>
                 <li><a href="">Dashboard</a></li>
                 <li>
                   <a href="{% url 'lakshmi_travels:logout_url' %}">Logout</a>
                 </li>
               </ul>
-              </div>
             </div>
-          </li>
-          {% else %}
-          <li>
-            <a href="{% url 'lakshmi_travels:login_page' %}">Login</a>
-          </li>
-          <li>
-            <a href="{% url 'lakshmi_travels:register_page' %}">Sign Up</a>
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
-    </header>
-
-    <!-- hero section -->
-    <section>
-      <div class="hero-section">
-        <div class="hero-section-img">
-          <img src="{% static 'images/home_page/innova.png' %}" alt="" />
-        </div>
-
-        <div class="text-content">
-          <h1>Planning a Trip and Looking for a car rental service ?</h1>
-          <h2>
-            <span>Lakshmi Travels</span> provides car and minibuses for rent
-            <span>along with driver</span> at affordable prices. We also
-            provides <span>weekly trips</span> from Pune to Kerala.
-          </h2>
-          <div id="hero" class="cta-button">
-            <a
-              href="{% url 'lakshmi_travels:home_view' %}#main-business-section"
-              >Rent a Car Now</a
-            >
           </div>
+        </li>
+        {% else %}
+        <li>
+          <a href="{% url 'lakshmi_travels:login_page' %}">Login</a>
+        </li>
+        <li>
+          <a href="{% url 'lakshmi_travels:register_page' %}">Sign Up</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <!-- hero section -->
+  <section>
+    <div class="hero-section">
+      <div class="hero-section-img">
+        <img src="{% static 'images/home_page/innova.png' %}" alt="" />
+      </div>
+
+      <div class="text-content">
+        <h1>Planning a Trip and Looking for a car rental service ?</h1>
+        <h2>
+          <span>Lakshmi Travels</span> provides car and minibuses for rent
+          <span>along with driver</span> at affordable prices. We also
+          provides <span>weekly trips</span> from Pune to Kerala.
+        </h2>
+        <div id="hero" class="cta-button">
+          <a href="{% url 'lakshmi_travels:home_view' %}#main-business-section">Rent a Car Now</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- main business section -->
+  <!-- main business section -->
 
-    <div
-      id="main-business-section"
-      name="main-business-section"
-      class="main-business-section"
-    >
-      <div class="tab-header">
-        <button
-          class="left-button tablinks"
-          onclick="openCity(event, 'weeklytrip')"
-        >
-          Daily Trip
-        </button>
-        <button
-          class="right-button tablinks"
-          id="defaultOpen"
-          onclick="openCity(event, 'carrent')"
-        >
-          Rent a Car
-        </button>
-      </div>
+  <div id="main-business-section" name="main-business-section" class="main-business-section">
+    <div class="tab-header">
+      <button class="left-button tablinks" onclick="openCity(event, 'weeklytrip')">
+        Daily Trip
+      </button>
+      <button class="right-button tablinks" id="defaultOpen" onclick="openCity(event, 'carrent')">
+        Rent a Car
+      </button>
+    </div>
 
-      <div class="section-body">
-        <div id="carrent" class="cab-selection tabcontent">
-          <h1>Choose the ride that suites you</h1>
+    <div class="section-body">
+      <div id="carrent" class="cab-selection tabcontent">
+        <h1>Choose the ride that suites you</h1>
 
-          <div class="cab-list">
-            {% for car in all_rental_cars %}
-            <div class="cab-card">
-              <img src="{{car.car_image.url}}" alt="" />
-              <h2>{{car.model_name}}</h2>
-              <ul>
-                <li>Seating Capacity: <span>{{car.seating_capacity}}</span></li>
-                <li>Rate per Day :<span> {{car.rate_per_day}}/-</span></li>
-                <li>
-                  KM allowed / Day: <span>{{car.km_allowed_per_day}}km</span>
-                </li>
-                <li>
-                  Additional KM Rate: <span>{{car.extra_km_per_day}}</span>
-                </li>
-              </ul>
-              <button>Book Now</button>
-            </div>
-            {% endfor %}
+        <div class="cab-list">
+          {% for car in all_rental_cars %}
+          <div class="cab-card">
+            <img src="{{car.car_image.url}}" alt="" />
+            <h2>{{car.model_name}}</h2>
+            <ul>
+              <li>Seating Capacity: <span>{{car.seating_capacity}}</span></li>
+              <li>Rate per Day :<span> {{car.rate_per_day}}/-</span></li>
+              <li>
+                KM allowed / Day: <span>{{car.km_allowed_per_day}}km</span>
+              </li>
+              <li>
+                Additional KM Rate: <span>{{car.extra_km_per_day}}</span>
+              </li>
+            </ul>
+            <form method="POST" action="">
+              {% csrf_token %}
+              <input type="hidden" name="car_rental_id" value="{{forloop.counter}}" id="">
+              <button type="submit">Book Now</button>
+            </form>
+          </div>
+          {% endfor %}
 
-            <!-- <div class="cab-card">
+          <!-- <div class="cab-card">
             <img src="{% static '/images/home_page/tata_indica.png' %}" alt="" />
             <h2>Innova</h2>
             <ul>
@@ -161,298 +134,252 @@
             </ul>
             <button>Book Now</button>
           </div> -->
-          </div>
         </div>
-        <div id="weeklytrip" class="trip-selection tabcontent">
-          <div class="sub-section">
-            <div class="back-image">
-              <!-- <img src="{% static 'images/home_page/taxi_graphic_mobile.png' %}" alt=""> -->
-            </div>
-            <div class="trip-section-heading-content">
-              <h1>Choose a Date for your Travel</h1>
-              <form method="POST">
-                {% csrf_token %}
-                <div class="search-box">
-                  <div class="search-bar">
-                    <div class="route">
-                      <select name="routes" id="routes">
-                        <option value="route1">Pune to Kerala</option>
-                        <option value="route2">Kerala to Pune</option>
-                      </select>
-                    </div>
+      </div>
+      <div id="weeklytrip" class="trip-selection tabcontent">
+        <div class="sub-section">
+          <div class="back-image">
+            <!-- <img src="{% static 'images/home_page/taxi_graphic_mobile.png' %}" alt=""> -->
+          </div>
+          <div class="trip-section-heading-content">
+            <h1>Choose a Date for your Travel</h1>
+            <form method="POST">
+              {% csrf_token %}
+              <div class="search-box">
+                <div class="search-bar">
+                  <div class="route">
+                    <select name="routes" id="routes">
+                      <option value="route1">Pune to Kerala</option>
+                      <option value="route2">Kerala to Pune</option>
+                    </select>
+                  </div>
 
-                    <input id="trip_date" type="date" value="" required />
-                  </div>
-                  <button type="submit" class="search-button">Search</button>
+                  <input id="trip_date" type="date" value="" required />
                 </div>
-              </form>
-            </div>
-            <div class="bgd">
-              <div class="trip-section-body">
-                <h2>Available Timings</h2>
-                <div class="trip-timings-list">
-                  <div class="trip-timings-card">
-                    <img
-                      src="{% static '/images/home_page/pune.jpg' %}"
-                      alt=""
-                    />
-                    <div class="compartment">
-                      <h3>Pune &rarr; Kerela</h3>
-                      <p class="price">1000/-</p>
-                    </div>
-                    <div class="compartment">
-                      <p>03/07/2020</p>
-                      <p>8:am</p>
-                    </div>
-                    <div class="book-button">
-                      <button>Book</button>
-                    </div>
+                <button type="submit" class="search-button">Search</button>
+              </div>
+            </form>
+          </div>
+          <div class="bgd">
+            <div class="trip-section-body">
+              <h2>Available Timings</h2>
+              <div class="trip-timings-list">
+                {% for trip in first_few_trips %}
+                <div class="trip-timings-card">
+                  <img src="{% static '/images/home_page/pune.jpg' %}" alt="" />
+                  <div class="compartment">
+                  {% if trip.route == 'route1' %}
+                    <h3>Pune &rarr; Kerela</h3>
+                    {% elif trip.route == 'route2' %}
+                    <h3>Kerela &rarr; Pune</h3>
+                    {% endif %}
+                    <p class="price">{{trip.price}}/-</p>
                   </div>
-                  <div class="trip-timings-card">
-                    <img
-                      src="{% static '/images/home_page/pune.jpg' %}"
-                      alt=""
-                    />
-                    <div class="compartment">
-                      <h3>Pune &rarr; Kerela</h3>
-                      <p class="price">1000/-</p>
-                    </div>
-                    <div class="compartment">
-                      <p>03/07/2020</p>
-                      <p>8:am</p>
-                    </div>
-                    <div class="book-button">
-                      <button>Book</button>
-                    </div>
+                  <div class="compartment">
+                    <p>{{trip.trip_timings|date:"DATE_FORMAT"}}</p>
+                    <p>{{ trip.trip_timings|time:"P" }}</p>
                   </div>
-                  <div class="trip-timings-card">
-                    <img
-                      src="{% static '/images/home_page/pune.jpg' %}"
-                      alt=""
-                    />
-                    <div class="compartment">
-                      <h3>Pune &rarr; Kerela</h3>
-                      <p class="price">1000/-</p>
-                    </div>
-                    <div class="compartment">
-                      <p>03/07/2020</p>
-                      <p>8:am</p>
-                    </div>
-                    <div class="book-button">
-                      <button>Book</button>
-                    </div>
+                  <div class="book-button">
+                  <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="hidden" name="trip_id" value="{{for_loop.counter}}">
+                    <button type="submit">Book</button>
+
+                  </form>
                   </div>
                 </div>
+                {% endfor %}
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- tour packages section -->
+  <!-- tour packages section -->
 
-    <section>
-      <div class="tour-packages-section">
-        <h2>We also provide various Tour Packages</h2>
-        <div class="tour-packages-list">
-          <div class="tour-package-card">
-            <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="" />
-            <h2>Leh Ladakh</h2>
-            <p>
-              A spectacular place with beuatiful scenary and at the same time a
-              rugged terrain
-            </p>
-            <p class="time">1 Week</p>
+  <section>
+    <div class="tour-packages-section">
+      <h2>We also provide various Tour Packages</h2>
+      <div class="tour-packages-list">
+        <div class="tour-package-card">
+          <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="" />
+          <h2>Leh Ladakh</h2>
+          <p>
+            A spectacular place with beuatiful scenary and at the same time a
+            rugged terrain
+          </p>
+          <p class="time">1 Week</p>
 
-            <div class="button-bar">
-              <a href="" class="details">Details</a>
-              <a href="" class="enquire_now">Enquire Now</a>
+          <div class="button-bar">
+            <a href="" class="details">Details</a>
+            <a href="" class="enquire_now">Enquire Now</a>
+          </div>
+        </div>
+        <div class="tour-package-card">
+          <img src="{% static 'images/home_page/kerela_tour.jpg' %}" alt="" />
+          <h2>Leh Ladakh</h2>
+          <p>
+            A spectacular place with beuatiful scenary and at the same time a
+            rugged terrain
+          </p>
+          <p class="time">1 Week</p>
+
+          <div class="button-bar">
+            <a href="" class="details">Details</a>
+            <a href="" class="enquire_now">Enquire Now</a>
+          </div>
+        </div>
+        <div class="tour-package-card">
+          <img src="{% static 'images/home_page/manali_tour.jpg' %}" alt="" />
+          <h2>Leh Ladakh</h2>
+          <p>
+            A spectacular place with beuatiful scenary and at the same time a
+            rugged terrain
+          </p>
+          <p class="time">1 Week</p>
+
+          <div class="button-bar">
+            <a href="" class="details">Details</a>
+            <a href="" class="enquire_now">Enquire Now</a>
+          </div>
+        </div>
+      </div>
+      <a class="tour-packages-link" href="{% url 'lakshmi_travels:tour_packages' %}">See more></a>
+    </div>
+  </section>
+
+  <!-- why choose us section -->
+
+  <section>
+    <div class="why-choose-us">
+      <h1>Why Choose Us ?</h1>
+      <div class="features">
+        <div class="feature-item">
+          <img src="{% static 'images/home_page/dollar-symbol.png' %}" alt="" />
+          <h3>Affordable Prices</h3>
+        </div>
+        <div class="feature-item">
+          <img src="{% static 'images/home_page/location-icon.png' %}" alt="" />
+          <h3>Tours at multiple locations</h3>
+        </div>
+        <div class="feature-item">
+          <img src="{% static 'images/home_page/secure.png' %}" alt="" />
+          <h3>Trusted by Customers</h3>
+        </div>
+        <div class="feature-item">
+          <img src="{% static 'images/home_page/destination.png' %}" alt="" />
+          <h3>Well Organised Tour Plans</h3>
+        </div>
+        <div class="feature-item">
+          <img src="{% static 'images/home_page/minibus.png' %}" alt="" />
+          <h3>Comfortable Ride throughout the journey</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact form -->
+  <section>
+    <div class="home-contact_us">
+      <div class="left-section">
+        <img src="{% static 'images/home_page/main_logo.jpeg' %}" alt="" />
+        <div class="text-content">
+          <p>
+            We will arange all type of transportation from Pune at very
+            affordable price
+          </p>
+          <p>&#9743; 9972457774 / 7356213451</p>
+        </div>
+      </div>
+
+      <div class="contact-us-form">
+        <div class="inner-container">
+          <h1>Get in Touch</h1>
+
+          <form action="">
+            <div class="form-item">
+              <label for="">Name</label>
+              <input type="text" placeholder="Your Name" />
             </div>
-          </div>
-          <div class="tour-package-card">
-            <img src="{% static 'images/home_page/kerela_tour.jpg' %}" alt="" />
-            <h2>Leh Ladakh</h2>
-            <p>
-              A spectacular place with beuatiful scenary and at the same time a
-              rugged terrain
-            </p>
-            <p class="time">1 Week</p>
-
-            <div class="button-bar">
-              <a href="" class="details">Details</a>
-              <a href="" class="enquire_now">Enquire Now</a>
+            <div class="form-item">
+              <label for="">Email Id</label>
+              <input type="text" placeholder="Your Email Id" />
             </div>
-          </div>
-          <div class="tour-package-card">
-            <img src="{% static 'images/home_page/manali_tour.jpg' %}" alt="" />
-            <h2>Leh Ladakh</h2>
-            <p>
-              A spectacular place with beuatiful scenary and at the same time a
-              rugged terrain
-            </p>
-            <p class="time">1 Week</p>
-
-            <div class="button-bar">
-              <a href="" class="details">Details</a>
-              <a href="" class="enquire_now">Enquire Now</a>
+            <div class="form-item">
+              <label for="">Message</label>
+              <textarea name="" id="" cols="20" rows="5" placeholder="message"></textarea>
             </div>
-          </div>
-        </div>
-        <a
-          class="tour-packages-link"
-          href="{% url 'lakshmi_travels:tour_packages' %}"
-          >See more></a
-        >
-      </div>
-    </section>
-
-    <!-- why choose us section -->
-
-    <section>
-      <div class="why-choose-us">
-        <h1>Why Choose Us ?</h1>
-        <div class="features">
-          <div class="feature-item">
-            <img
-              src="{% static 'images/home_page/dollar-symbol.png' %}"
-              alt=""
-            />
-            <h3>Affordable Prices</h3>
-          </div>
-          <div class="feature-item">
-            <img
-              src="{% static 'images/home_page/location-icon.png' %}"
-              alt=""
-            />
-            <h3>Tours at multiple locations</h3>
-          </div>
-          <div class="feature-item">
-            <img src="{% static 'images/home_page/secure.png' %}" alt="" />
-            <h3>Trusted by Customers</h3>
-          </div>
-          <div class="feature-item">
-            <img src="{% static 'images/home_page/destination.png' %}" alt="" />
-            <h3>Well Organised Tour Plans</h3>
-          </div>
-          <div class="feature-item">
-            <img src="{% static 'images/home_page/minibus.png' %}" alt="" />
-            <h3>Comfortable Ride throughout the journey</h3>
-          </div>
+            <button type="submit">Send</button>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- contact form -->
-    <section>
-      <div class="home-contact_us">
-        <div class="left-section">
-          <img src="{% static 'images/home_page/main_logo.jpeg' %}" alt="" />
-          <div class="text-content">
-            <p>
-              We will arange all type of transportation from Pune at very
-              affordable price
-            </p>
-            <p>&#9743; 9972457774 / 7356213451</p>
-          </div>
-        </div>
+  <footer>
+    <div class="">
+      <img class="logo-img" src="{% static 'images/home_page/main_logo.jpeg' %}" alt="" />
+      <p>
+        &#9743; 9972457774 <br />
+        7356213451
+      </p>
+    </div>
 
-        <div class="contact-us-form">
-          <div class="inner-container">
-            <h1>Get in Touch</h1>
+    <div>
+      <h3>Site Map</h3>
+      <ul>
+        <li><a href="{% url 'lakshmi_travels:home_view' %}"> Home</a></li>
+        <li>
+          <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a>
+        </li>
+        <li>
+          <a href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry</a>
+        </li>
+        <li>
+          <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a>
+        </li>
+        <li><a href="">Contact Us</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Others</h3>
+      <ul>
+        <li><a href="">Popular Tours</a></li>
+        <li><a href="">All Tours</a></li>
+        <li><a href="">Featured</a></li>
+        <li><a href="">Prices</a></li>
+        <li><a href="">FAQ’s</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
 
-            <form action="">
-              <div class="form-item">
-                <label for="">Name</label>
-                <input type="text" placeholder="Your Name" />
-              </div>
-              <div class="form-item">
-                <label for="">Email Id</label>
-                <input type="text" placeholder="Your Email Id" />
-              </div>
-              <div class="form-item">
-                <label for="">Message</label>
-                <textarea
-                  name=""
-                  id=""
-                  cols="20"
-                  rows="5"
-                  placeholder="message"
-                ></textarea>
-              </div>
-              <button type="submit">Send</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+<script>
+  function openCity(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
 
-    <footer>
-      <div class="">
-        <img
-          class="logo-img"
-          src="{% static 'images/home_page/main_logo.jpeg' %}"
-          alt=""
-        />
-        <p>
-          &#9743; 9972457774 <br />
-          7356213451
-        </p>
-      </div>
-
-      <div>
-        <h3>Site Map</h3>
-        <ul>
-          <li><a href="{% url 'lakshmi_travels:home_view' %}"> Home</a></li>
-          <li>
-            <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a>
-          </li>
-          <li>
-            <a href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry</a>
-          </li>
-          <li>
-            <a href="{% url 'lakshmi_travels:tour_packages' %}"
-              >Tour Packages</a
-            >
-          </li>
-          <li><a href="">Contact Us</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Others</h3>
-        <ul>
-          <li><a href="">Popular Tours</a></li>
-          <li><a href="">All Tours</a></li>
-          <li><a href="">Featured</a></li>
-          <li><a href="">Prices</a></li>
-          <li><a href="">FAQ’s</a></li>
-        </ul>
-      </div>
-    </footer>
-  </body>
-
-  <script>
-    function openCity(evt, cityName) {
-      // Declare all variables
-      var i, tabcontent, tablinks;
-
-      // Get all elements with class="tabcontent" and hide them
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-
-      // Get all elements with class="tablinks" and remove the class "active"
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-
-      // Show the current tab, and add an "active" class to the button that opened the tab
-      document.getElementById(cityName).style.display = "block";
-      evt.currentTarget.className += " active";
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
     }
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-  </script>
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
+
 </html>
