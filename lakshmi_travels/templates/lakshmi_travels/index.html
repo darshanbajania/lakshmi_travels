@@ -182,7 +182,7 @@
                   <div class="book-button">
                   <form method="POST" action="">
                     {% csrf_token %}
-                    <input type="hidden" name="trip_id" value="{{for_loop.counter}}">
+                    <input type="hidden" name="trip_id" value="{{forloop.counter}}">
                     <button type="submit">Book</button>
 
                   </form>

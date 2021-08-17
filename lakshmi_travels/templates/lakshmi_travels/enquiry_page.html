@@ -76,11 +76,13 @@
                     {% if booking_type == 'rental_car' %}
                     <div class="col-md-4">
                         <label for="inputdestination" class="form-label">Car Model</label>
-                        <input type="text" class="form-control" id="inputdestination" value="{{ selected_car }}" placeholder="Innova" readonly>
+                        <input type="text" class="form-control" id="inputdestination" value="{{ selected_car }}"
+                            placeholder="Innova" readonly>
                     </div>
                     <div class="col-md-4">
                         <label for="inputAddress" class="form-label">Your Location</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra" required>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra"
+                            required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputstartdate" class="form-label">Date</label>
@@ -89,55 +91,69 @@
 
 
                     {% else %}
-                    
+
                     <div class="form-check col-md-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexCheckcabbooking"
-                            value="option1" checked>
+                        <input class="form-check-input" onclick="ChangeFormLayout()" type="radio" name="exampleRadios"
+                            id="flexCheckcabbooking" value="option1">
                         <label class="form-check-label" for="flexCheckcabbooking">
                             Book A Cab
                         </label>
                     </div>
                     <div class="form-check col-md-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexChecktripbooking"
-                            value="option1" required>
+                        <input class="form-check-input" onclick="ChangeFormLayout()" type="radio" name="exampleRadios" id="flexChecktripbooking"
+                            value="option1" checked>
                         <label class="form-check-label" for="flexChecktripbooking">
                             Book a Trip
                         </label>
                     </div>
                     <div class="form-check col-md-4">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="flexChecktripbooking"
-                            value="option1" required>
+                        <input class="form-check-input" onclick="ChangeFormLayout()" type="radio" name="exampleRadios" id="flexChecktourbooking"
+                            value="option1">
                         <label class="form-check-label" for="flexChecktourbooking">
                             Book a Tour Package
                         </label>
                     </div>
-                    
-                    <div class="col-md-4">
+
+                    <div class="col-md-4 tourType rentalType">
                         <label for="inputdestination" class="form-label">Destination</label>
-                        <input type="text" class="form-control" id="inputdestination" placeholder="Jaipur, Rajasthan" required>
+                        <input type="text" class="form-control" id="inputdestination" placeholder="Jaipur, Rajasthan"
+                            required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 dailyTripType">
+                        <label for="inputroute" class="form-label">Route</label>
+                        <input type="text" class="form-control" id="inputroute" placeholder="Pune to Kerela" required>
+                    </div>
+                    <div class="col-md-4 rentalType">
+                        <label for="inputrentaldate" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="inputrentaldate" required>
+                    </div>
+                    <div class="col-md-4 dailyTripType">
+                        <label for="inputdailytripdate" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="inputdailytripdate" required>
+                    </div>
+                    <div class="col-md-4 tourType">
                         <label for="inputstartdate" class="form-label">Journey Start</label>
                         <input type="date" class="form-control" id="inputstartdate" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 tourType">
                         <label for="inputdays" class="form-label">Days</label>
                         <input type="number" class="form-control" id="inputdays" placeholder="5" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 tourType">
                         <label for="inputadults" class="form-label">Adults</label>
                         <input type="number" class="form-control" id="inputadults" placeholder="" required>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 tourType">
                         <label for="inputchildren" class="form-label">Children</label>
                         <input type="number" class="form-control" id="inputchildren" placeholder="" required>
                     </div>
 
                     <div class="col-md-4">
                         <label for="inputAddress" class="form-label">Your Location</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra" required>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra"
+                            required>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 tourType">
                         <label for="exampleFormControlTextarea1" class="form-label">Tour Details</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                             placeholder="Please tell us your tour requirements"></textarea required>
@@ -219,5 +235,69 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
     crossorigin="anonymous"></script>
+
+<script>
+    // form modifications
+
+    function ChangeFormLayout() {
+        const rentalCarCheckBox = document.getElementById('flexCheckcabbooking');
+        const dailyTripCheckBox = document.getElementById('flexChecktripbooking');
+        const TourCheckBox = document.getElementById('flexChecktourbooking');
+
+        // form types
+
+        if (rentalCarCheckBox.checked) {
+            document.querySelectorAll('.tourType').forEach(item => {
+                item.classList.add('d-none')
+                console.log(item.classList)
+            })
+            document.querySelectorAll('.dailyTripType').forEach(item => {
+                item.classList.add('d-none')
+                console.log(item.classList)
+            })
+            document.querySelectorAll('.rentalType').forEach(item => {
+                item.classList.remove('d-none')
+                console.log(item.classList)
+            })
+        }
+        else if(dailyTripCheckBox.checked){
+            document.querySelectorAll('.tourType').forEach(item => {
+                item.classList.add('d-none')
+                console.log(item.classList)
+            })
+ 
+            document.querySelectorAll('.rentalType').forEach(item => {
+                item.classList.add('d-none')
+                console.log(item.classList)
+            })   
+            document.querySelectorAll('.dailyTripType').forEach(item => {
+                item.classList.remove('d-none')
+                console.log(item.classList)
+            })        
+        }
+
+        else if(TourCheckBox.checked){
+
+            document.querySelectorAll('.dailyTripType').forEach(item => {
+                item.classList.add('d-none')
+                console.log(item.classList)
+            })  
+            document.querySelectorAll('.rentalType').forEach(item => {
+                item.classList.add('d-none')
+                console.log(item.classList)
+            })   
+            document.querySelectorAll('.tourType').forEach(item => {
+                item.classList.remove('d-none')
+                console.log(item.classList)
+            })       
+        }
+
+
+        // console.log(rentalCarCheckBox.checked, dailyTripCheckBox.checked, TourCheckBox.checked)
+
+    }
+    ChangeFormLayout()
+
+</script>
 
 </html>

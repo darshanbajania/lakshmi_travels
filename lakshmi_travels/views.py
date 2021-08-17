@@ -37,9 +37,9 @@ def Home(request):
             query_string = urlencode({'rental_car_id': booking_request_rental_car_id, 'booking_type': booking_type})
             url = '{}?{}'.format(base_url, query_string)
         elif trip_booking_request_id != None:
-            booking_type = 'trip'
+            booking_type = 'daily_trip'
             base_url = reverse('lakshmi_travels:enquiry_page')
-            query_string = urlencode({'rental_car_id': trip_booking_request_id, 'booking_type': booking_type})
+            query_string = urlencode({'daily_trip_id': trip_booking_request_id, 'booking_type': booking_type})
             url = '{}?{}'.format(base_url, query_string)            
         # print(url)
         return redirect(url)
@@ -61,17 +61,23 @@ def DailyTripView(request):
 
 def EnquiryPageview(request):
     booking_type = request.GET.get('booking_type')
-    
-    print(booking_type)
-    # car_request_id = request.GET.get('rental_car_id')
-    car_request_id = '1'
-    selected_car = RentalCars.objects.all().filter(car_id = car_request_id).first()
-    if selected_car!= None:
-        booking_type = 'rental_car'
-    
+    daily_trip_id = request.GET.get('daily_trip_id')
+    car_request_id = request.GET.get('rental_car_id')
+    selected_car = None
+    selected_trip = None
+
+    if booking_type == 'rental_car':
+        selected_car = RentalCars.objects.all().filter(car_id = car_request_id).first()
+        if selected_car!= None:
+            booking_type = 'rental_car'
+    elif booking_type == 'daily_trip':
+        selected_trip = TripDetails.objects.all().filter(trip_id = daily_trip_id).first()
+
+    # print(booking_type, car_request_id, daily_trip_id)
     context = {
         'booking_type': booking_type,
         'selected_car': selected_car,
+        'selected_trip': selected_trip,
     }
     return render(request, 'lakshmi_travels/enquiry_page.html', context)
 
