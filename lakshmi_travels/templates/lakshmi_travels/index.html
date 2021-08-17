@@ -1,5 +1,6 @@
 {% load static %}
 
+{% block heading %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +12,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <title>Lakshmi Travels</title>
 </head>
-
+{% endblock heading%}
+{% block body%}
 <body>
+  {% block navigation %}
   <header>
     <div class="home_image">
       <a href="{% url 'lakshmi_travels:home_view' %}"><img src="{% static 'images/home_page/main_logo.jpeg' %}"
@@ -28,7 +31,7 @@
           <a href="{% url 'lakshmi_travels:home_view' %}#main-business-section">Car Rental</a>
         </li>
         <li>
-          <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a>
+          <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trips</a>
         </li>
         <li>
           <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a>
@@ -43,7 +46,12 @@
             <span>{{user.username|truncatechars:9 }}</span>
             <div class="dropdown-content">
               <ul>
-                <li><a href="">Dashboard</a></li>
+                {% if user.is_staff %}
+                <li><a href="{% url 'lakshmi_travels:admin_dashboard' %}">Dashboard</a></li>
+                {% else %}
+                <li><a href="{% url 'lakshmi_travels:customer_dashboard_page' %}">Dashboard</a></li>
+                {% endif %}
+
                 <li>
                   <a href="{% url 'lakshmi_travels:logout_url' %}">Logout</a>
                 </li>
@@ -62,6 +70,7 @@
       </ul>
     </nav>
   </header>
+  {% endblock navigation %}
 
   <!-- hero section -->
   <section>
@@ -318,7 +327,7 @@
       </div>
     </div>
   </section>
-
+  {% block footer%}
   <footer>
     <div class="">
       <img class="logo-img" src="{% static 'images/home_page/main_logo.jpeg' %}" alt="" />
@@ -333,7 +342,7 @@
       <ul>
         <li><a href="{% url 'lakshmi_travels:home_view' %}"> Home</a></li>
         <li>
-          <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a>
+          <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trips</a>
         </li>
         <li>
           <a href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry</a>
@@ -355,8 +364,11 @@
       </ul>
     </div>
   </footer>
+  {% endblock footer%}
 </body>
+{% endblock body%}
 
+{% block jscript%}
 <script>
   function openCity(evt, cityName) {
     // Declare all variables
@@ -381,5 +393,5 @@
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
 </script>
-
+{% endblock jscript%}
 </html>

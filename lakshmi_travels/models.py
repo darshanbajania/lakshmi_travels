@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-import uuid
+
 from django.db.models.fields import CharField 
 
 
@@ -49,7 +49,7 @@ class TripDetails(models.Model):
 
 class Customers(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Profile')
-    customer_id = models.UUIDField(unique=True, default = uuid.uuid4, editable = False)
+    customer_id = models.CharField(default="no_id", max_length=20)
     full_name = models.CharField(default="user", max_length=100)
     email_id = models.CharField(default="user.gmail.com", max_length=100)
     address = models.CharField(default="address", max_length=500)

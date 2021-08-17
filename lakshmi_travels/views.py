@@ -1,6 +1,6 @@
 from django.http import request
 from django.shortcuts import render, redirect
-from .models import TripDetails, RentalCars
+from .models import TripDetails, RentalCars, Customers
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.models import User, AnonymousUser
 from .forms import CreateUserForm
@@ -26,8 +26,7 @@ def Home(request):
     all_daily_trips = TripDetails.objects.all()
     first_few_trips = all_daily_trips[:4]
     booking_type = 'tour'
-
-    print(first_few_trips)
+    print(request.user.is_staff)
     if request.method == 'POST':
         booking_request_rental_car_id = request.POST.get('car_rental_id')
         trip_booking_request_id = request.POST.get('trip_id')
@@ -82,18 +81,21 @@ def EnquiryPageview(request):
     return render(request, 'lakshmi_travels/enquiry_page.html', context)
 
 def LoginView(request):
-    if request.method == 'POST':
-        login_username = request.POST.get('username')
-        login_password = request.POST.get('password')
-        # print(login_username, login_password)
+    if request.session.has_key('is_logged_in'):
+        return redirect('/')
+    else:
+        if request.method == 'POST':
+            login_username = request.POST.get('username')
+            login_password = request.POST.get('password')
+            # print(login_username, login_password)
 
-        user = authenticate(username=login_username, password=login_password)
-        print(user)
+            user = authenticate(username=login_username, password=login_password)
+            print(user)
 
-        if user is not None:
-            login(request, user)
-            request.session['is_logged_in'] = True
-            return redirect('/')
+            if user is not None:
+                login(request, user)
+                request.session['is_logged_in'] = True
+                return redirect('/')        
 
     return render(request, 'registration/login.html')
 
@@ -103,7 +105,7 @@ def RegisterView(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-
+            return redirect('/')
     context = {
         'form': form,
     }

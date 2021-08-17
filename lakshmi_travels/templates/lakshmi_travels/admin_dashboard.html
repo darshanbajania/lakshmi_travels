@@ -1,4 +1,6 @@
+{% extends 'lakshmi_travels/index.html' %}
 {% load static %}
+{% block heading%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,58 +15,13 @@
     <link rel="stylesheet" href="{% static 'css/customer_dashboard.css' %}" type="text/css" media="screen">
     <title>Customer Dashboard</title>
 </head>
-
+{% endblock heading%}
+{% block body%}
 <body>
-    <header>
-        <div class="home_image">
-          <a href="{% url 'lakshmi_travels:home_view' %}"><img src="{% static 'images/home_page/main_logo.jpeg' %}"
-              alt="Lakshmi Travels Logo" /></a>
-        </div>
-    
-        <label for="nav-toggler"><i class="fa fa-navicon"></i></label>
-        <input type="checkbox" id="nav-toggler" class="nav-toggler" />
-    
-        <nav>
-          <ul>
-            <li>
-              <a href="{% url 'lakshmi_travels:home_view' %}#main-business-section">Car Rental</a>
-            </li>
-            <li>
-              <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trip</a>
-            </li>
-            <li>
-              <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a>
-            </li>
-            <li>
-              <a class="nav-cta" href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry Now</a>
-            </li>
-                      {% if user.is_authenticated %}
 
-          <li>
-            <div class="dropdown">
-              <span>{{user.username|truncatechars:9 }}</span>
-              <div class="dropdown-content">
-              <ul>
-                <li><a href="">Dashboard</a></li>
-                <li>
-                  <a href="{% url 'lakshmi_travels:logout_url' %}">Logout</a>
-                </li>
-              </ul>
-              </div>
-            </div>
-          </li>
-          {% else %}
-          <li>
-            <a href="{% url 'lakshmi_travels:login_page' %}">Login</a>
-          </li>
-          <li>
-            <a href="{% url 'lakshmi_travels:register_page' %}">Sign Up</a>
-          </li>
-          {% endif %}
-
-          </ul>
-        </nav>
-      </header>
+    {% block navigation %}
+    {{block.super}}
+    {% endblock navigation %}
     
 
     <div class="main-container">
@@ -73,16 +30,16 @@
 
         <div class="sidebar">
             <div class="heading">
-                <h2>Darshan Bajania</h2>
-                <p>ID: abcde1234</p>
+                <h2>{{user.username}}</h2>
+                <p>ID: {{user.id}}</p>
             </div>
             <div class="sidebar-body">
                 <ul>
                     <li><a href="">Dashboard</a></li>
                     <li><a href="">Tours</a></li>
                     <li><a href="">Rental Cars</a></li>
+                    <li><a href="">Daily Trips</a></li>
                     
-                    <li><a href="">Logout</a></li>
 
                 </ul>
             </div>
@@ -108,6 +65,12 @@
         </div>
 
     </div>
+        {% block footer%}
+{{ block.super }}
+    {% endblock footer%}
 </body>
+{% endblock body%}
+{% block jscript%}
+{% endblock jscript%}
 
 </html>
