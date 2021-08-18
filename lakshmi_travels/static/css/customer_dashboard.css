@@ -66,3 +66,22 @@
     border: 1px solid var(--clr-light);
     border-radius: 5px;
 }
+
+.trip_details_modify_form{
+    border-radius: 5px;
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgb(255, 220, 220);
+    padding: 1em;
+}
+
+/* .trip_details_modify_form button{
+    display: block;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: .5em 1em;
+    font-size: 1em;
+    background-color: white;
+    color: var(--clr-light); 
+} */

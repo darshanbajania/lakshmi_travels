@@ -1036,6 +1036,7 @@ img {
 
 .discount-banner .text-content h1 span{
   font-weight: 900;
+  color: var(--clr-cta);
 }
 
 .discount-banner .text-content .cta-button a:hover {

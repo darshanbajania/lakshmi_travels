@@ -1,9 +1,9 @@
 from django.http import request
 from django.shortcuts import render, redirect
-from .models import TripDetails, RentalCars, Customers
+from .models import TourPackageDetails, TripDetails, RentalCars, Customers
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm
 from django.contrib.auth.models import User, AnonymousUser
-from .forms import CreateUserForm
+from .forms import CreateUserForm, TripDetailsForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.models import Session
@@ -14,7 +14,6 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 import datetime
 from django.core.mail import send_mail
-
 from django.utils.timezone import utc
 from django.http import JsonResponse
 import json
@@ -26,6 +25,9 @@ import json
 def Home(request):
     all_rental_cars = RentalCars.objects.all().filter(availabilty_status = True)
     all_daily_trips = TripDetails.objects.all()
+    all_tour_packages = TourPackageDetails.objects.all()
+    all_tour_packages = all_tour_packages[:3]
+
     first_few_trips = all_daily_trips[:4]
     booking_type = 'tour'
     # print(request.user.is_staff)
@@ -59,12 +61,18 @@ def Home(request):
     context = {
         'all_rental_cars': all_rental_cars,
         'first_few_trips': first_few_trips,
+        'all_tour_packages': all_tour_packages,
+
     }
 
     return render(request, 'lakshmi_travels/index.html', context)
 
 def TourPackagesView(request):
-    return render(request, 'lakshmi_travels/tour_packages.html')
+    all_tour_packages = TourPackageDetails.objects.all()
+    context = {
+        'all_tour_packages': all_tour_packages,
+    }
+    return render(request, 'lakshmi_travels/tour_packages.html', context)
 
 def DailyTripView(request):
     daily_trip_route = request.GET.get('daily_trip_route')
@@ -206,4 +214,30 @@ def AdminDashBoardRentalCarsView(request):
     return render(request, 'lakshmi_travels/admin_dashboard_rental_cars.html', context)
 @login_required
 def AdminDashBoardDailyTripsView(request):
-    return render(request, 'lakshmi_travels/admin_dashboard_daily_trips.html')
+    all_daily_trips = TripDetails.objects.all()
+    if request.method == "POST":
+        change_type = request.POST.get('change_type')
+        if change_type == 'add_new':
+            return redirect('lakshmi_travels:admin_dashboard_daily_trip_form')
+    context = {
+        'all_daily_trips': all_daily_trips,
+    }
+
+    return render(request, 'lakshmi_travels/admin_dashboard_daily_trips.html', context)
+
+
+@login_required
+def AdminDashBoardDailyTripsFormView(request):
+    all_daily_trips = TripDetails.objects.all()
+    if request.method == 'POST':
+        trip_route = request.POST.get('car_route')
+        trip_date = request.POST.get('car_date')
+        trip_price = request.POST.get('car_price')
+
+    td_form = TripDetailsForm()
+    context = {
+        'td_form': td_form,
+        'all_daily_trips': all_daily_trips,
+    }
+
+    return render(request, 'lakshmi_travels/admin_dashboard_daily_trip_form.html', context)

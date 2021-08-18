@@ -1,0 +1,39 @@
+{% extends 'lakshmi_travels/admin_dashboard.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block main-content %}
+<div class="trip_details_modify_form">
+    <h1>Add a new Trip</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="row my-3 g-3">
+            <div class="col-md-4">
+                <label for="exampleFormControlInput1" class="form-label">Trip Route</label>
+                <select name="trip_route" class="form-select" aria-label="Default select example" >
+                    <option selected>Kerela To Pune</option>
+                    <option value="1">Pune to Kerela</option>
+
+                  </select>
+            </div>
+            <div class="col-md-4">
+                <label for="exampleFormControlInput1" class="form-label">Date and time</label>
+                <input name="trip_date" type="datetime-local" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" required>
+            </div>
+        
+       
+            <div class="col-md-4">
+                <label for="exampleFormControlInput1" class="form-label">Trip Price</label>
+                <input name="trip_price" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Rs 1000" required>
+            </div>
+
+        </div>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+
+
+</div>
+
+{% endblock main-content %}

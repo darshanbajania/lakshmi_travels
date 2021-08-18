@@ -22,6 +22,7 @@
 </head>
 {% endblock heading%}
 {% block body%}
+
 <body>
     {% block navigation %}
     {{block.super}}
@@ -53,40 +54,35 @@
         <div class="tour-packages-section">
             <h2>We also provide various Tour Packages</h2>
             <div class="tour-packages-list">
-                <div class="tour-package-card">
-                    <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
-                    <h2>Leh Ladakh</h2>
-                    <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
-                    <p class="time">1 Week</p>
+                {% for package in all_tour_packages %}
+                {% if forloop.counter < 4 %} <div class="tour-package-card">
+                    <img src="{{package.tour_package_image.url}}" alt="" />
+                    <h2>{{package.package_name}}</h2>
+                    <p>
+                        {{package.summary}}
+                    </p>
+                    <p class="time">{{package.duration}}</p>
 
                     <div class="button-bar">
                         <a href="" class="details">Details</a>
                         <a href="" class="enquire_now">Enquire Now</a>
                     </div>
-                </div>
-                <div class="tour-package-card">
-                    <img src="{% static 'images/home_page/kerela_tour.jpg' %}" alt="">
-                    <h2>Leh Ladakh</h2>
-                    <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
-                    <p class="time">1 Week</p>
-
-                    <div class="button-bar">
-                        <a href="" class="details">Details</a>
-                        <a href="" class="enquire_now">Enquire Now</a>
-                    </div>
-                </div>
-                <div class="tour-package-card">
-                    <img src="{% static 'images/home_page/manali_tour.jpg' %}" alt="">
-                    <h2>Leh Ladakh</h2>
-                    <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
-                    <p class="time">1 Week</p>
-
-                    <div class="button-bar">
-                        <a href="" class="details">Details</a>
-                        <a href="" class="enquire_now">Enquire Now</a>
-                    </div>
-                </div>
+                    {% endif %}
             </div>
+            {% endfor %}
+
+            {% comment %} <div class="tour-package-card">
+                <img src="{% static 'images/home_page/manali_tour.jpg' %}" alt="">
+                <h2>Leh Ladakh</h2>
+                <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
+                <p class="time">1 Week</p>
+
+                <div class="button-bar">
+                    <a href="" class="details">Details</a>
+                    <a href="" class="enquire_now">Enquire Now</a>
+                </div>
+            </div> {% endcomment %}
+        </div>
 
         </div>
     </section>
@@ -113,76 +109,27 @@
             <h1>Check Out These Destinations</h1>
             <div class="tour-packages-section">
                 <div class="tour-packages-list">
-                    <div class="tour-package-card">
-                        <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
-                        <h2>Leh Ladakh</h2>
-                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
-                        <p class="time">1 Week</p>
+                    {% for package in all_tour_packages %}
+                    {% if forloop.counter < 7 %}
+                     <div class="tour-package-card">
+                        <img src="{{package.tour_package_image.url}}" alt="" />
+                        <h2>{{package.package_name}}</h2>
+                        <p>
+                            {{package.summary}}
+                        </p>
+                        <p class="time">{{package.duration}}</p>
 
                         <div class="button-bar">
                             <a href="" class="details">Details</a>
                             <a href="" class="enquire_now">Enquire Now</a>
                         </div>
-                    </div>
-                    <div class="tour-package-card">
-                        <img src="{% static 'images/home_page/kerela_tour.jpg' %}" alt="">
-                        <h2>Leh Ladakh</h2>
-                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
-                        <p class="time">1 Week</p>
-
-                        <div class="button-bar">
-                            <a href="" class="details">Details</a>
-                            <a href="" class="enquire_now">Enquire Now</a>
-                        </div>
-                    </div>
-                    <div class="tour-package-card">
-                        <img src="{% static 'images/home_page/manali_tour.jpg' %}" alt="">
-                        <h2>Leh Ladakh</h2>
-                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
-                        <p class="time">1 Week</p>
-
-                        <div class="button-bar">
-                            <a href="" class="details">Details</a>
-                            <a href="" class="enquire_now">Enquire Now</a>
-                        </div>
-                    </div>
-                    <div class="tour-package-card">
-                        <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
-                        <h2>Leh Ladakh</h2>
-                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
-                        <p class="time">1 Week</p>
-
-                        <div class="button-bar">
-                            <a href="" class="details">Details</a>
-                            <a href="" class="enquire_now">Enquire Now</a>
-                        </div>
-                    </div>
-                    <div class="tour-package-card">
-                        <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
-                        <h2>Leh Ladakh</h2>
-                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
-                        <p class="time">1 Week</p>
-
-                        <div class="button-bar">
-                            <a href="" class="details">Details</a>
-                            <a href="" class="enquire_now">Enquire Now</a>
-                        </div>
-                    </div>
-                    <div class="tour-package-card">
-                        <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="">
-                        <h2>Leh Ladakh</h2>
-                        <p>A spectacular place with beuatiful scenary and at the same time a rugged terrain</p>
-                        <p class="time">1 Week</p>
-
-                        <div class="button-bar">
-                            <a href="" class="details">Details</a>
-                            <a href="" class="enquire_now">Enquire Now</a>
-                        </div>
-                    </div>
+                        {% endif %}
                 </div>
-                <!-- <a class="tour-packages-link" href="">See more></a> -->
-
+                {% endfor %}
             </div>
+            <!-- <a class="tour-packages-link" href="">See more></a> -->
+
+        </div>
 
         </div>
     </section>
@@ -277,7 +224,7 @@
     </section>
 
     {% block footer%}
-{{ block.super }}
+    {{ block.super }}
     {% endblock footer%}
 
 
@@ -289,4 +236,5 @@
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
     crossorigin="anonymous"></script>
 {% endblock jscript%}
+
 </html>

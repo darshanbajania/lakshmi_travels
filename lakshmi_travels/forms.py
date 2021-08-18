@@ -1,11 +1,18 @@
 from django import forms
 from django.db import models
+from django.db.models import fields
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+from .models import TripDetails, Customers, RentalCars
+
+class TripDetailsForm(forms.ModelForm):
+    class Meta:
+        model = TripDetails
+        fields = '__all__'
 
 
 class CreateUserForm(UserCreationForm):

@@ -213,35 +213,23 @@
     <div class="tour-packages-section">
       <h2>We also provide various Tour Packages</h2>
       <div class="tour-packages-list">
+      {% for package in all_tour_packages %}
         <div class="tour-package-card">
-          <img src="{% static 'images/home_page/Ladakh_tour.png' %}" alt="" />
-          <h2>Leh Ladakh</h2>
+          <img src="{{package.tour_package_image.url}}" alt="" />
+          <h2>{{package.package_name}}</h2>
           <p>
-            A spectacular place with beuatiful scenary and at the same time a
-            rugged terrain
+            {{package.summary}}
           </p>
-          <p class="time">1 Week</p>
+          <p class="time">{{package.duration}}</p>
 
           <div class="button-bar">
             <a href="" class="details">Details</a>
             <a href="" class="enquire_now">Enquire Now</a>
           </div>
         </div>
-        <div class="tour-package-card">
-          <img src="{% static 'images/home_page/kerela_tour.jpg' %}" alt="" />
-          <h2>Leh Ladakh</h2>
-          <p>
-            A spectacular place with beuatiful scenary and at the same time a
-            rugged terrain
-          </p>
-          <p class="time">1 Week</p>
+      {% endfor %}
 
-          <div class="button-bar">
-            <a href="" class="details">Details</a>
-            <a href="" class="enquire_now">Enquire Now</a>
-          </div>
-        </div>
-        <div class="tour-package-card">
+        <!-- <div class="tour-package-card">
           <img src="{% static 'images/home_page/manali_tour.jpg' %}" alt="" />
           <h2>Leh Ladakh</h2>
           <p>
@@ -254,7 +242,7 @@
             <a href="" class="details">Details</a>
             <a href="" class="enquire_now">Enquire Now</a>
           </div>
-        </div>
+        </div> -->
       </div>
       <a class="tour-packages-link" href="{% url 'lakshmi_travels:tour_packages' %}">See more></a>
     </div>

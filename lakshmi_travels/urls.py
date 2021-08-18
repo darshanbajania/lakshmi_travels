@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin_dashboard/tours/', views.AdminDashBoardToursView, name='admin_dashboard_tours'),
     path('admin_dashboard/rental_cars/', views.AdminDashBoardRentalCarsView, name='admin_dashboard_rental_cars'),
     path('admin_dashboard/daily_trips/', views.AdminDashBoardDailyTripsView, name='admin_dashboard_daily_trips'),
+    path('admin_dashboard/daily_trips/modify', views.AdminDashBoardDailyTripsFormView, name='admin_dashboard_daily_trip_form'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

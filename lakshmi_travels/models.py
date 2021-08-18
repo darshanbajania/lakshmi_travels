@@ -48,6 +48,20 @@ class TripDetails(models.Model):
 #         super().save()
 
 
+class TourPackageDetails(models.Model):
+    tour_id = models.IntegerField(default='0')
+    package_name = models.CharField(default='Tourist Destination', max_length=100)
+    summary = models.CharField(default = 'summary', max_length=400)
+    duration = models.CharField(default = '1 Week', max_length=100)
+    details = models.CharField(default = 'details', max_length=1000)
+    tour_package_image = models.ImageField(default="tour_package.jpg", upload_to='tour_package_images')
+
+    availability_status = models.BooleanField(default=True)
+ 
+    def __str__(self):
+        return f'{self.package_name} '
+
+
 class Customers(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Profile')
     customer_id = models.CharField(default="no_id", max_length=20)
