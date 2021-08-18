@@ -17,6 +17,7 @@
 
 .sidebar .heading{
     padding: 1em;
+    padding-top: 2em;
     background-color: rgb(224, 224, 224);
     border-bottom: 1px solid var(--clr-medium);
 }
@@ -52,5 +53,16 @@
 }
 
 .main-content{
-    width: 70%;
+    padding-top: 2em;
+    width: 80%;
+}
+.main-content .customer-info{
+    padding: 2em;
+}
+
+.main-content .info{
+    margin-top: 2em;
+    padding: 1em;
+    border: 1px solid var(--clr-light);
+    border-radius: 5px;
 }

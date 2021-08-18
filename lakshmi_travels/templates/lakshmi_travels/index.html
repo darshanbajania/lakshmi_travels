@@ -163,7 +163,7 @@
                     </select>
                   </div>
 
-                  <input id="trip_date" type="date" value="" required />
+                  <input id="trip_date" type="date" name="daily_trip_date" value="" required />
                 </div>
                 <button type="submit" class="search-button">Search</button>
               </div>
@@ -182,7 +182,7 @@
                     {% elif trip.route == 'route2' %}
                     <h3>Kerela &rarr; Pune</h3>
                     {% endif %}
-                    <p class="price">{{trip.price}}/-</p>
+                    <p class="price">{{trip.trip_price}}/-</p>
                   </div>
                   <div class="compartment">
                     <p>{{trip.trip_timings|date:"DATE_FORMAT"}}</p>
@@ -290,6 +290,23 @@
     </div>
   </section>
 
+  <!-- discounts-banner -->
+  <div class="discount-banner">
+    <div class="hero-section-img">
+      <!-- <img src="{% static 'images/home_page/discount-banner2.jpg' %}" alt="" /> -->
+      <img src="{% static 'images/home_page/banner.jpg' %}" alt="" />
+
+    </div>
+
+    <div class="text-content">
+      <h1>Get a <span>Flat 20% Discount</span> on all Services by Registering with Us</h1>
+
+      <div id="hero" class="cta-button">
+        <a href="{% url 'lakshmi_travels:register_page' %}">Register now</a>
+      </div>
+    </div>
+  </div>
+</section>
   <!-- contact form -->
   <section>
     <div class="home-contact_us">
@@ -327,6 +344,8 @@
       </div>
     </div>
   </section>
+  <section>
+
   {% block footer%}
   <footer>
     <div class="">

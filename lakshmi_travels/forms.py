@@ -8,8 +8,6 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
 
-
-
 class CreateUserForm(UserCreationForm):
     class Meta:
         model = User

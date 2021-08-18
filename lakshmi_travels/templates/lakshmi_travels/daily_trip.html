@@ -22,6 +22,7 @@
 </head>
 {% endblock heading%}
 {% block body%}
+
 <body>
     {% block navigation %}
     {{block.super}}
@@ -44,78 +45,56 @@
                                 {% csrf_token %}
                                 <div class="search-box">
                                     <div class="search-bar">
-
                                         <div class="route">
                                             <select name="routes" id="routes">
                                                 <option value="route1">Pune to Kerala</option>
                                                 <option value="route2">Kerala to Pune</option>
-
                                             </select>
                                         </div>
 
-                                        <input id="trip_date" type="date" value="" required>
-
-
-
+                                        <input id="trip_date" type="date" name="daily_trip_date" value="" required />
                                     </div>
-                                    <button type="submit" class="search-button">
-                                        Search
-                                    </button>
+                                    <button type="submit" class="search-button">Search</button>
                                 </div>
-
                             </form>
 
                         </div>
                         <div class="bgd">
                             <div class="trip-section-body">
 
-                                <h2>Available Trips</h2>
+                                <h2>Available Trips {{selected_day_trip|length}} </h2>
                                 <div class="trip-timings-list">
+                                    {% if selected_day_trip|length == 0 %}
+                                    <h1>no trips for this date</h1>
+                                    {% endif %}
+                                    {% for trip in selected_day_trip %}
                                     <div class="trip-timings-card">
-                                        <img src="{% static '/images/home_page/pune.jpg' %}" alt="">
+                                        <img src="{% static '/images/home_page/pune.jpg' %}" alt="" />
                                         <div class="compartment">
+                                            {% if trip.route == 'route1' %}
                                             <h3>Pune &rarr; Kerela</h3>
-                                            <p class="price">1000/-</p>
+                                            {% elif trip.route == 'route2' %}
+                                            <h3>Kerela &rarr; Pune</h3>
+                                            {% endif %}
+                                            <p class="price">{{trip.trip_price}}/-</p>
                                         </div>
                                         <div class="compartment">
-                                            <p>03/07/2020</p>
-                                            <p>8:am</p>
+                                            <p>{{trip.trip_timings|date:"DATE_FORMAT"}}</p>
+                                            <p>{{ trip.trip_timings|time:"P" }}</p>
                                         </div>
                                         <div class="book-button">
-                                            <button>Book</button>
-                                        </div>
+                                            <form method="POST" action="">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="trip_id" value="{{forloop.counter}}">
+                                                <button type="submit">Book</button>
 
+                                            </form>
+                                        </div>
                                     </div>
-                                    <div class="trip-timings-card">
-                                        <img src="{% static '/images/home_page/pune.jpg' %}" alt="">
-                                        <div class="compartment">
-                                            <h3>Pune &rarr; Kerela</h3>
-                                            <p class="price">1000/-</p>
-                                        </div>
-                                        <div class="compartment">
-                                            <p>03/07/2020</p>
-                                            <p>8:am</p>
-                                        </div>
-                                        <div class="book-button">
-                                            <button>Book</button>
-                                        </div>
+                                    {% endfor %}
 
-                                    </div>
-                                    <div class="trip-timings-card">
-                                        <img src="{% static '/images/home_page/pune.jpg' %}" alt="">
-                                        <div class="compartment">
-                                            <h3>Pune &rarr; Kerela</h3>
-                                            <p class="price">1000/-</p>
-                                        </div>
-                                        <div class="compartment">
-                                            <p>03/07/2020</p>
-                                            <p>8:am</p>
-                                        </div>
-                                        <div class="book-button">
-                                            <button>Book</button>
-                                        </div>
 
-                                    </div>
+
                                 </div>
 
                             </div>
@@ -130,7 +109,7 @@
 
 
     {% block footer%}
-{{ block.super }}
+    {{ block.super }}
     {% endblock footer%}
 
 

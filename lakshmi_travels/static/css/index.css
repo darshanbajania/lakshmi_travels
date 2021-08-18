@@ -976,6 +976,142 @@ img {
   }
 }
 
+/* discount banner  section */
+
+.discount-banner {
+  position: relative;
+  width: 100%;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  height: 400px;
+  margin-bottom: 100px;
+
+}
+
+.discount-banner .hero-section-img img {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  top: 150px;
+  left: 0;
+}
+
+.discount-banner .text-content h1 {
+  font-family: "Comfortaa", cursive;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 0.5em;
+  /* text-transform: capitalize; */
+}
+
+.discount-banner .text-content h2 {
+  font-size: 0.9rem;
+  margin-top: 190px;
+  padding: 0.5em;
+  color: var(--clr-light);
+  font-weight: 500;
+}
+
+.discount-banner .text-content h2 span {
+  color: var(--clr-medium);
+  font-weight: 700;
+}
+
+.discount-banner .text-content .cta-button {
+  text-align: center;
+  margin-top: 2em;
+}
+
+.discount-banner .text-content .cta-button a {
+  background-color: var(--clr-cta);
+  text-decoration: none;
+  color: white;
+  padding: 0.5em 1em;
+  font-size: 1.6rem;
+  font-weight: 700;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
+  transition: 150ms ease-in;
+}
+
+.discount-banner .text-content h1 span{
+  font-weight: 900;
+}
+
+.discount-banner .text-content .cta-button a:hover {
+  background-color: #d10000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (min-width: 40em) {
+  .discount-banner {
+    height: 200px;
+  }
+  .discount-banner .hero-section-img img {
+    width: 60%;
+    left: 0;
+    /* right: 0; */
+    top: 50px;
+  }
+
+  .discount-banner .text-content {
+    position: absolute;
+    right: 0;
+    width: 60%;
+    margin-top: 3em;
+  }
+  .discount-banner .text-content h1 {
+    font-size: 2em;
+    text-align: right;
+    margin: 0;
+  }
+
+  .discount-banner .text-content h2 {
+    width: 40%;
+    margin-top: 1em;
+    padding-left: 1em;
+    margin-top: 0;
+  }
+
+  .discount-banner .text-content .cta-button {
+    text-align: center;
+    padding-left: 1em;
+    margin-top: 3em;
+  }
+}
+
+@media screen and (min-width: 60em) {
+  .discount-banner {
+    width: 100%;
+    height: 400px;
+    /* margin-bottom: 400px; */
+  }
+
+  .discount-banner .hero-section-img img {
+    width: 50%;
+    top: -40px;
+  }
+
+  .discount-banner .text-content {
+    padding-right: 70px;
+    margin-top: 3em;
+  }
+
+  .discount-banner .text-content h1 {
+    font-size: 2.2em;
+    font-weight: 400;
+    line-height: 45px;
+    /* width: 50%; */
+  }
+
+  .discount-banner .text-content h2 {
+    width: 35%;
+    line-height: 25px;
+    font-size: 1em;
+  }
+}
+
+
 /* contact form section */
 
 .home-contact_us {

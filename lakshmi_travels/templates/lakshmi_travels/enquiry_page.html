@@ -41,38 +41,38 @@
                     {% if booking_type == 'rental_car' %}
                     <div class="col-md-4">
                         <label for="inputdestination" class="form-label">Car Model</label>
-                        <input type="text" class="form-control" id="inputdestination" value="{{ selected_car }}"
+                        <input type="text" class="form-control" name="car_model" id="inputdestination" value="{{ selected_car }}"
                             placeholder="Innova" readonly>
                     </div>
                     <div class="col-md-4">
                         <label for="inputAddress" class="form-label">Your Location</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra"
+                        <input type="text" class="form-control" name="location" id="inputAddress" placeholder="Pune, Maharastra"
                             required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputstartdate" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="inputstartdate" required>
+                        <input type="date" class="form-control" name="date" id="inputstartdate" required>
                     </div>
 
 
                     {% else %}
 
                     <div class="form-check col-md-4">
-                        <input class="form-check-input" onclick="ChangeFormLayout()" type="radio" name="exampleRadios"
+                        <input class="form-check-input"  onclick="ChangeFormLayout()" type="radio" name="exampleRadios"
                             id="flexCheckcabbooking" value="option1">
                         <label class="form-check-label" for="flexCheckcabbooking">
                             Book A Cab
                         </label>
                     </div>
                     <div class="form-check col-md-4">
-                        <input class="form-check-input" onclick="ChangeFormLayout()" type="radio" name="exampleRadios" id="flexChecktripbooking"
+                        <input class="form-check-input"  onclick="ChangeFormLayout()" type="radio" name="exampleRadios" id="flexChecktripbooking"
                             value="option1" checked>
                         <label class="form-check-label" for="flexChecktripbooking">
                             Book a Trip
                         </label>
                     </div>
                     <div class="form-check col-md-4">
-                        <input class="form-check-input" onclick="ChangeFormLayout()" type="radio" name="exampleRadios" id="flexChecktourbooking"
+                        <input class="form-check-input"  onclick="ChangeFormLayout()" type="radio" name="exampleRadios" id="flexChecktourbooking"
                             value="option1">
                         <label class="form-check-label" for="flexChecktourbooking">
                             Book a Tour Package

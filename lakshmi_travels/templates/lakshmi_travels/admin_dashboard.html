@@ -1,33 +1,28 @@
 {% extends 'lakshmi_travels/index.html' %}
-{% load static %}
-{% block heading%}
+ {% load static %} 
+ {% block heading%}
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" media="screen" />
 
-    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" media="screen">
-
-    <link rel="stylesheet" href="{% static 'css/customer_dashboard.css' %}" type="text/css" media="screen">
+    <link rel="stylesheet" href="{% static 'css/customer_dashboard.css' %}" type="text/css" media="screen" />
     <title>Customer Dashboard</title>
 </head>
-{% endblock heading%}
-{% block body%}
-<body>
+{% endblock heading%} {% block body%}
 
+<body>
     {% block navigation %}
-    {{block.super}}
-    {% endblock navigation %}
-    
+     {{block.super}}
+      {% endblock navigation %}
 
     <div class="main-container">
-
-
-
         <div class="sidebar">
             <div class="heading">
                 <h2>{{user.username}}</h2>
@@ -35,42 +30,40 @@
             </div>
             <div class="sidebar-body">
                 <ul>
-                    <li><a href="">Dashboard</a></li>
-                    <li><a href="">Tours</a></li>
-                    <li><a href="">Rental Cars</a></li>
-                    <li><a href="">Daily Trips</a></li>
-                    
-
+                    <li><a href="{% url 'lakshmi_travels:admin_dashboard' %}">Dashboard</a></li>
+                    <li><a href="{% url 'lakshmi_travels:admin_dashboard_customers' %}">Customers</a></li>
+                    <li><a href="{% url 'lakshmi_travels:admin_dashboard_tours' %}">Tours</a></li>
+                    <li><a href="{% url 'lakshmi_travels:admin_dashboard_rental_cars' %}">Rental Cars</a></li>
+                    <li><a href="{% url 'lakshmi_travels:admin_dashboard_daily_trips' %}">Daily Trips</a></li>
                 </ul>
             </div>
         </div>
 
-
-
         <div class="main-content">
-
+        {% block main-content %}
             <div class="customer-info">
                 <h1>Your Details</h1>
 
                 <div class="info">
-                <h2>Darshan Bajania</h2>
-                <p>darshanbajania1999@gmail.com</p>
-                <p>999aaaa999</p>
-                <p>address</p>
+                    <h2>username: {{user.username}}</h2>
+                    <p>email: {{user.email}}</p>
+                    <p>999aaaa999</p>
+                    <p>address</p>
                 </div>
-
-
             </div>
 
-        </div>
+        {% endblock main-content %}
 
+
+        </div>
     </div>
-        {% block footer%}
-{{ block.super }}
-    {% endblock footer%}
+    {% block footer%}
+     {{ block.super }}
+      {% endblock footer%}
 </body>
 {% endblock body%}
-{% block jscript%}
-{% endblock jscript%}
+ {% block jscript%}
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  {% endblock jscript%}
 
 </html>

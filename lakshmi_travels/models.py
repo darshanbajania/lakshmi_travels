@@ -26,6 +26,7 @@ class TripDetails(models.Model):
     trip_id = models.IntegerField(default='0')
     route = models.CharField(default='route1', max_length=400)
     trip_timings = models.DateTimeField()
+    trip_price = models.CharField(default='1000', max_length=20)
     availability_status = models.BooleanField(default=True)
  
     def __str__(self):

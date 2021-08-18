@@ -1,0 +1,51 @@
+{% extends 'lakshmi_travels/admin_dashboard.html' %}
+
+{% block main-content %}
+<h1>Modify the Car details</h1>
+<form method="POST" action="">
+    {% csrf_token %}
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Car ID</th>
+        <th scope="col">Car Model</th>
+        <th scope="col">Per day Price</th>
+        <th scope="col">Availability</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for car in all_rental_cars %}
+      <tr>
+        <th scope="row">{{car.car_id}}</th>
+        <td>{{car.model_name}}</td>
+        <td>{{car.rate_per_day}}/-</td>
+        <td>
+
+            {% if car.availabilty_status == True %}
+                <div class="form-check form-switch">
+                <input class="form-check-input" name="car_{{car.car_id}}" type="checkbox" id="flexSwitchCheckDefault" checked>
+                </div>
+            {% else %}
+            <div class="form-check form-switch">
+                <input class="form-check-input" name="car_{{car.car_id}}" type="checkbox" id="flexSwitchCheckDefault" >
+            </div>
+            {% endif %}
+
+
+
+
+        </td>
+      </tr>
+  {% endfor %}
+  
+    </tbody>
+  </table>
+  <div class="row">
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-primary " >Save</button>
+
+      </div>
+
+  </div>
+</form>
+{% endblock main-content %}

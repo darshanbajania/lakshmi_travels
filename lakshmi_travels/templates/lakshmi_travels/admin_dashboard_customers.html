@@ -1,0 +1,26 @@
+{% extends 'lakshmi_travels/admin_dashboard.html' %}
+
+
+{% block main-content %}
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Customer ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for customers in all_users %}
+    <tr>
+      <th scope="row">{{customers.id}}</th>
+      <td>{{customers.username}}</td>
+      <td>{{customers.email}}</td>
+      <td>{{customers.phone_number}}</td>
+    </tr>
+{% endfor %}
+
+  </tbody>
+</table>
+{% endblock main-content %}
