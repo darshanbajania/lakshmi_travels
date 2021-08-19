@@ -753,6 +753,7 @@ img {
   width: 100%;
   padding: 1em;
   margin: 0;
+  margin-bottom: 5em;
 }
 
 .tour-packages-section h2 {
@@ -803,24 +804,30 @@ img {
   margin-bottom: 1em;
 }
 
-.tour-packages-section .tour-packages-list .tour-package-card .button-bar a {
+.tour-packages-section .tour-packages-list .tour-package-card .button-bar button {
   text-decoration: none;
   color: #00e6e4;
   background-color: white;
   border: 1px solid #00e6e4;
   padding: 0.5em 1em;
   border-radius: 5px;
-  width: 35%;
+  width: 100%;
+  /* width: 35%; */
+  cursor: pointer;
   text-align: center;
   font-family: "Roboto", sans-serif;
   transition: 100ms ease-in;
+}
+
+.tour-packages-section .tour-packages-list .tour-package-card .button-bar .button-form{
+  width: 35%;
 }
 
 .tour-packages-section
   .tour-packages-list
   .tour-package-card
   .button-bar
-  a:hover {
+  button:hover {
   color: #05fffd;
 }
 
@@ -887,9 +894,11 @@ img {
     padding-right: 1em;
     font-size: 0.9rem;
   }
-
-  .tour-packages-section .tour-packages-list .tour-package-card .button-bar a {
+  .tour-packages-section .tour-packages-list .tour-package-card .button-bar .button-form{
     width: 40%;
+  }
+  .tour-packages-section .tour-packages-list .tour-package-card .button-bar button {
+    /* width: 40%; */
     font-size: 0.9rem;
   }
 }

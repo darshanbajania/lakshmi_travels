@@ -2,4 +2,80 @@
 
 
 {% block main-content %}
+<h1>Manage Tours</h1>
+
+<div class="add-new-item">
+  <h3>Add a Tour Package</h3>
+  <div class="add-button">
+    <form method="POST" action="">
+      {% csrf_token %}
+      <input type="hidden" name="change_type" value="add_new">
+      <button type="submit"><i class="fa fa-plus"></i></button>
+    </form>
+  </div>
+
+</div>
+
+<section>
+  <table class="table table-stoured table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Tour ID</th>
+        <th scope="col">Package Name</th>
+        <th scope="col">Summary</th>
+        <th scope="col">Duration</th>
+        <!-- <th scope="col">Edit</th> -->
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for tour in all_tours %}
+      <tr>
+        <th scope="row">{{tour.tour_id}}</th>
+        <td>{{tour.package_name}}</td>
+        <td>{{tour.summary|truncatechars:25}}</td>
+        <td>{{tour.duration}}</td>
+        <!-- <td>
+          <form id='event_edit_form{{tour.tour_id}}' method="POST" action="">
+            {% csrf_token %}
+            <input type="hidden" name="change_type" value="edit_tour">
+            <input type="hidden" id="edit_tour{{tour.tour_id}}" name="edit_tour" value="{{tour.tour_id}}">
+
+            <button onclick="editAlert('{{tour.tour_id}}','tour id: {{tour.tour_id}} {{tour.route}}')"
+              class="edit_button" type="button"><i class="fas fa-edit "></i></button>
+          </form>
+        </td> -->
+        <td>
+          <form id='event_delete_form{{tour.tour_id}}' method="POST" action="">
+            {% csrf_token %}
+            <input type="hidden" name="change_type" value="delete_tour">
+            <input type="hidden" id="delete_tour{{tour.tour_id}}" name="delete_tour_id" value="{{tour.tour_id}}">
+            <button onclick="deleteAlert('{{tour.tour_id}}','tour id: {{tour.tour_id}} {{tour.package_name}}')"
+              class="delete_button" type="button"><i class="fas fa-trash "></i></button>
+
+          </form>
+        </td>
+
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</section>
+
+<script>
+  var editAlert = (eventId, eventName) => {
+    if (window.confirm("Are you sure you want to \n Edit " + eventName)) {
+      // console.log('helloo')
+      document.getElementById('event_edit_form' + eventId).submit();
+    }
+  }
+
+  var deleteAlert = (eventId, eventName) => {
+    if (window.confirm("Are you sure you want to \n Delete " + eventName)) {
+      // console.log('helloo')
+      document.getElementById('event_delete_form' + eventId).submit();
+    }
+  }
+</script>
 {% endblock main-content %}

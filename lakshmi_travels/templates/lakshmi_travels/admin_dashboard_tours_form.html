@@ -1,0 +1,52 @@
+{% extends 'lakshmi_travels/admin_dashboard.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block main-content %}
+<div class="trip_details_modify_form">
+    <h1>Add a new Tour</h1>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row my-3 g-3">
+            <div class="col-md-4">
+                <label for="form_tour_package_name" class="form-label">Tour Package Name</label>
+                <input name="tour_name" type="text" class="form-control" id="form_tour_package_name"
+                    placeholder="Package Name" required>
+            </div>
+            <div class="col-md-4">
+                <label for="form_tour_summary" class="form-label">Short Description</label>
+                <input name="tour_summary" type="text" class="form-control" id="form_tour_summary"
+                    placeholder="Package description" required>
+            </div>
+
+
+            <div class="col-md-4">
+                <label for="form_tour_duration" class="form-label">Duration</label>
+                <input name="tour_duration" type="text" class="form-control" id="form_tour_duration"
+                    placeholder="Week 1" required>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col-12 mb-3">
+                <label for="formFile" class="form-label">Choose an image for tours</label>
+                <input name="tour_image" class="form-control" type="file" id="formFile" required>
+            </div>
+            <div class="col-12">
+                <label for="form_tour_details" class="form-label">Tour Details</label>
+                <textarea name="tour_details" class="form-control" id="form_tour_details"
+                    placeholder="Enter tour information" rows="3" required></textarea>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+
+
+</div>
+<script>
+
+</script>
+{% endblock main-content %}
