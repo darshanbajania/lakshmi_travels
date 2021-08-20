@@ -191,7 +191,7 @@
                   <div class="book-button">
                   <form method="POST" action="">
                     {% csrf_token %}
-                    <input type="hidden" name="trip_id" value="{{forloop.counter}}">
+                    <input type="hidden" name="trip_id" value="{{trip.trip_id}}">
                     <button type="submit">Book</button>
 
                   </form>
@@ -328,18 +328,20 @@
         <div class="inner-container">
           <h1>Get in Touch</h1>
 
-          <form action="">
+          <form method="POST" action="">
+            {% csrf_token %}
+            <input type="hidden" name="contact-form" value="contact-form">
             <div class="form-item">
               <label for="">Name</label>
-              <input type="text" placeholder="Your Name" />
+              <input name="full-name" type="text" placeholder="Your Name" required />
             </div>
             <div class="form-item">
               <label for="">Email Id</label>
-              <input type="text" placeholder="Your Email Id" />
+              <input name="email-id" type="email" placeholder="Your Email Id" required />
             </div>
             <div class="form-item">
               <label for="">Message</label>
-              <textarea name="" id="" cols="20" rows="5" placeholder="message"></textarea>
+              <textarea name="message" id="" cols="20" rows="5" placeholder="message" required></textarea>
             </div>
             <button type="submit">Send</button>
           </form>

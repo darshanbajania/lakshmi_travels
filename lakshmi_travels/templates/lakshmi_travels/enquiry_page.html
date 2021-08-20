@@ -33,12 +33,17 @@
         <div class="enquiry-form">
             {% if booking_type == 'rental_car' %}
             <h1>Send us your request for Renting a Car</h1>
+            {% elif booking_type == 'daily_trip' %}
+            <h1>Daily Trip</h1>
+
             {% else %}
             <h1>Tell us your travel requirements!</h1>
             {% endif %}
             <div class=" container">
-                <form class="row g-3">
+                <form method="POST" class="row g-3">
+                    {% csrf_token %}
                     {% if booking_type == 'rental_car' %}
+                    <input type="hidden" name="item-category" value="rental-car">
                     <div class="col-md-4">
                         <label for="inputdestination" class="form-label">Car Model</label>
                         <input type="text" class="form-control" name="car_model" id="inputdestination" value="{{ selected_car }}"
@@ -53,9 +58,64 @@
                         <label for="inputstartdate" class="form-label">Date</label>
                         <input type="date" class="form-control" name="date" id="inputstartdate" required>
                     </div>
+                    {% elif booking_type == 'daily_trip' %}
+                    <input type="hidden" name="item-category" value="daily-trip">
 
+                    <div class="col-md-4 ">
+                        <label for="inputroute" class="form-label">Route</label>
+                        <input type="text" name="route" class="form-control" id="inputroute" value="{{selected_trip.route}}" placeholder="{{selected_trip.route}}" readonly>
+                    </div>
+
+                    <div class="col-md-4 dailyTripType">
+                        <label for="inputdailytripdate" class="form-label">Date</label>
+                        <input type="datetime" name="date" class="form-control" id="inputdailytripdate" value="{{selected_trip.trip_timings}}" readonly >
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="inputAddress" class="form-label">Your Location</label>
+                        <input type="text" name="location" class="form-control" id="inputAddress" placeholder="Pune, Maharastra"
+                            required>
+                    </div>
+                    {% elif booking_type == 'tour_package' %}
+                    <input type="hidden" name="item-category" value="tour-package">
+
+                    <div class="col-md-4 tourType rentalType">
+                        <label for="inputdestination" class="form-label">Destination</label>
+                        <input type="text" name="destination" class="form-control" id="inputdestination" value="{{selected_tour.package_name}}" placeholder="Jaipur, Rajasthan"
+                            required>
+                    </div>
+
+
+                    <div class="col-md-4 tourType">
+                        <label for="inputstartdate" class="form-label">Journey Start</label>
+                        <input type="date" name="journey-start" class="form-control" id="inputstartdate" required>
+                    </div>
+                    <div class="col-md-4 tourType">
+                        <label for="inputdays" class="form-label">Days</label>
+                        <input type="number" name="days" class="form-control" id="inputdays" placeholder="5" required>
+                    </div>
+                    <div class="col-md-4 tourType">
+                        <label for="inputadults" class="form-label">Adults</label>
+                        <input type="number" name="adults" class="form-control" id="inputadults" placeholder="" required>
+                    </div>
+                    <div class="col-md-4 tourType">
+                        <label for="inputchildren" class="form-label">Children</label>
+                        <input type="number" name="children" class="form-control" id="inputchildren" placeholder="" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="inputAddress" class="form-label">Your Location</label>
+                        <input type="text" name="location" class="form-control" id="inputAddress" placeholder="Pune, Maharastra"
+                            required>
+                    </div>
+                    <div class="col-12 tourType">
+                        <label for="exampleFormControlTextarea1" class="form-label">Tour Details</label>
+                        <textarea name="tour-details" class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            placeholder="Please tell us your tour requirements"></textarea required>
+                    </div>
 
                     {% else %}
+                    <input type="hidden" name="item-category" value="enquiry-page">
 
                     <div class="form-check col-md-4">
                         <input class="form-check-input"  onclick="ChangeFormLayout()" type="radio" name="exampleRadios"
@@ -78,77 +138,87 @@
                             Book a Tour Package
                         </label>
                     </div>
-
-                    <div class="col-md-4 tourType rentalType">
+                    <div class="col-md-4 rentalType">
+                        <label for="inputCarModel" class="form-label">Car Model</label>
+                        <input type="text" class="form-control" name="car_model" id="inputCarModel" 
+                            placeholder="Innova" required>
+                    </div>
+                    <div class="col-md-4 tourType ">
                         <label for="inputdestination" class="form-label">Destination</label>
-                        <input type="text" class="form-control" id="inputdestination" placeholder="Jaipur, Rajasthan"
+                        <input type="text" name="destination" class="form-control" id="inputdestination" placeholder="Jaipur, Rajasthan"
                             required>
+                        <input type="hidden" name="enquiry-category" value="tour-package">
+
                     </div>
                     <div class="col-md-4 dailyTripType">
                         <label for="inputroute" class="form-label">Route</label>
-                        <input type="text" class="form-control" id="inputroute" placeholder="Pune to Kerela" required>
+                        <input type="text" name="route" class="form-control" id="inputroute" placeholder="Pune to Kerela" required>
+                        <input type="hidden" name="enquiry-category" value="daily-trip">
+
                     </div>
                     <div class="col-md-4 rentalType">
                         <label for="inputrentaldate" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="inputrentaldate" required>
+                        <input type="date" name="date" class="form-control" id="inputrentaldate" required>
+                        <input type="hidden" name="enquiry-category" value="rental-car">
+
                     </div>
                     <div class="col-md-4 dailyTripType">
                         <label for="inputdailytripdate" class="form-label">Date</label>
-                        <input type="date" class="form-control" id="inputdailytripdate" required>
+                        <input type="date" name="date" class="form-control" id="inputdailytripdate" required>
                     </div>
                     <div class="col-md-4 tourType">
                         <label for="inputstartdate" class="form-label">Journey Start</label>
-                        <input type="date" class="form-control" id="inputstartdate" required>
+                        <input type="date" name="journey-start" class="form-control" id="inputstartdate" required>
                     </div>
                     <div class="col-md-4 tourType">
                         <label for="inputdays" class="form-label">Days</label>
-                        <input type="number" class="form-control" id="inputdays" placeholder="5" required>
+                        <input type="number" name="days" class="form-control" id="inputdays" placeholder="5" required>
                     </div>
                     <div class="col-md-4 tourType">
                         <label for="inputadults" class="form-label">Adults</label>
-                        <input type="number" class="form-control" id="inputadults" placeholder="" required>
+                        <input type="number" name="adults" class="form-control" id="inputadults" placeholder="" required>
                     </div>
                     <div class="col-md-4 tourType">
                         <label for="inputchildren" class="form-label">Children</label>
-                        <input type="number" class="form-control" id="inputchildren" placeholder="" required>
+                        <input type="number" name="children" class="form-control" id="inputchildren" placeholder="" required>
                     </div>
 
                     <div class="col-md-4">
                         <label for="inputAddress" class="form-label">Your Location</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="Pune, Maharastra"
+                        <input type="text" name="location" class="form-control" id="inputAddress" placeholder="Pune, Maharastra"
                             required>
                     </div>
                     <div class="col-12 tourType">
                         <label for="exampleFormControlTextarea1" class="form-label">Tour Details</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                        <textarea name="tour-details" class="form-control" id="exampleFormControlTextarea1" rows="3"
                             placeholder="Please tell us your tour requirements"></textarea required>
                     </div>
                     {% endif %}
                     {% if user.is_authenticated %}
                     <div class="col-md-4">
                         <label for="inputname" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="inputname" value="{{user.username}}" placeholder="Full Name" readonly>
+                        <input type="text" name="full-name" class="form-control" id="inputname" value="{{user.username}}" placeholder="Full Name" readonly>
                     </div>
                     <div class="col-md-4">
                         <label for="inputphone" class="form-label">Phone Number</label>
-                        <input type="number" class="form-control" id="inputphone" required>
+                        <input type="tel" name="phone-number" class="form-control" id="inputphone" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input type="email" class="form-control" value="{{user.email}}" id="inputEmail4" readonly>
+                        <input type="email" name="email" class="form-control" value="{{user.email}}" id="inputEmail4" readonly>
                     </div>
                     {% else %}
                     <div class="col-md-4">
                         <label for="inputname" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="inputname" value="{{user.username}}" placeholder="Full Name" required>
+                        <input type="text" name="full-name" class="form-control" id="inputname" value="{{user.username}}" placeholder="Full Name" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputphone" class="form-label">Phone Number</label>
-                        <input type="number" class="form-control" id="inputphone" required>
+                        <input type="tel" name="phone-number" class="form-control" id="inputphone" required>
                     </div>
                     <div class="col-md-4">
                         <label for="inputEmail4" class="form-label">Email</label>
-                        <input type="email" class="form-control" value="{{user.email}}" id="inputEmail4" required>
+                        <input type="email" name="email" class="form-control" value="{{user.email}}" id="inputEmail4" required>
                     </div>
                     {% endif %}
                     <div class="col-12">
@@ -186,30 +256,30 @@
         if (rentalCarCheckBox.checked) {
             document.querySelectorAll('.tourType').forEach(item => {
                 item.classList.add('d-none')
-                console.log(item.classList)
+                // console.log(item.classList)
             })
             document.querySelectorAll('.dailyTripType').forEach(item => {
                 item.classList.add('d-none')
-                console.log(item.classList)
+                // console.log(item.classList)
             })
             document.querySelectorAll('.rentalType').forEach(item => {
                 item.classList.remove('d-none')
-                console.log(item.classList)
+                // console.log(item.classList)
             })
         }
         else if(dailyTripCheckBox.checked){
             document.querySelectorAll('.tourType').forEach(item => {
                 item.classList.add('d-none')
-                console.log(item.classList)
+                // console.log(item.classList)
             })
  
             document.querySelectorAll('.rentalType').forEach(item => {
                 item.classList.add('d-none')
-                console.log(item.classList)
+                // console.log(item.classList)
             })   
             document.querySelectorAll('.dailyTripType').forEach(item => {
                 item.classList.remove('d-none')
-                console.log(item.classList)
+                // console.log(item.classList)
             })        
         }
 
@@ -217,15 +287,15 @@
 
             document.querySelectorAll('.dailyTripType').forEach(item => {
                 item.classList.add('d-none')
-                console.log(item.classList)
+                // console.log(item.classList)
             })  
             document.querySelectorAll('.rentalType').forEach(item => {
                 item.classList.add('d-none')
-                console.log(item.classList)
+                // console.log(item.classList)
             })   
             document.querySelectorAll('.tourType').forEach(item => {
                 item.classList.remove('d-none')
-                console.log(item.classList)
+                // console.log(item.classList)
             })       
         }
 

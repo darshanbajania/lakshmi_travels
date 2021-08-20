@@ -35,6 +35,17 @@ def Home(request):
     booking_type = 'tour'
     # print(request.user.is_staff)
     if request.method == 'POST':
+        if request.POST.get('contact-form') == 'contact-form':
+            name = request.POST.get('full-name')
+            sender = request.POST.get('email-id')
+            # mobile = request.POST.get('phone')
+            query = request.POST.get('message')
+            recipients = ['darshanbajania1999@gmail.com']
+            subject = "Lakshmi Travels Website Inquiry - Home page"
+            message = "hello testing"
+            message = "Name: "+name + "\nEmail Id: " + sender + "\nMessage: "
+            send_mail(subject, message, 'darshanbajania1999@gmail.com', recipients)
+
         booking_request_rental_car_id = request.POST.get('car_rental_id')
         trip_booking_request_id = request.POST.get('trip_id')
         daily_trip_route = request.POST.get('routes')
@@ -64,9 +75,18 @@ def Home(request):
 
         if request.POST.get('tour_request_type') == 'details':
             tour_package_id = request.POST.get('tour_id')
-            base_url = reverse('lakshmi_travels:login_page')
+            base_url = reverse('lakshmi_travels:tour_package_details')
             query_string = urlencode(
-                {'daily_trip_route': daily_trip_route, 'daily_trip_date': daily_trip_date})
+                {'tour_package_id': tour_package_id})
+            url = '{}?{}'.format(base_url, query_string)
+            return redirect(url)
+
+        if request.POST.get('tour_request_type') == 'enquiry':
+            booking_type = 'tour_package'
+            tour_package_id = request.POST.get('tour_id')
+            base_url = reverse('lakshmi_travels:enquiry_page')
+            query_string = urlencode(
+                {'booking_type': booking_type, 'tour_package_id': tour_package_id})
             url = '{}?{}'.format(base_url, query_string)
             return redirect(url)
 
@@ -84,10 +104,37 @@ def Home(request):
 
 def TourPackagesView(request):
     all_tour_packages = TourPackageDetails.objects.all()
+    if request.method == "POST":
+        if request.POST.get('tour_request_type') == 'details':
+            tour_package_id = request.POST.get('tour_id')
+            base_url = reverse('lakshmi_travels:tour_package_details')
+            query_string = urlencode(
+                {'tour_package_id': tour_package_id})
+            url = '{}?{}'.format(base_url, query_string)
+            return redirect(url)
+
+        if request.POST.get('tour_request_type') == 'enquiry':
+            booking_type = 'tour_package'
+            tour_package_id = request.POST.get('tour_id')
+            base_url = reverse('lakshmi_travels:enquiry_page')
+            query_string = urlencode(
+                {'booking_type': booking_type, 'tour_package_id': tour_package_id})
+            url = '{}?{}'.format(base_url, query_string)
+            return redirect(url)
     context = {
         'all_tour_packages': all_tour_packages,
     }
     return render(request, 'lakshmi_travels/tour_packages.html', context)
+
+
+def TourPackageDetailsView(request):
+    package_id = request.GET.get('tour_package_id')
+    selected_package = TourPackageDetails.objects.all().filter(tour_id=package_id).first()
+
+    context = {
+        'selected_package': selected_package,
+    }
+    return render(request, 'lakshmi_travels/tour_details.html', context)
 
 
 def DailyTripView(request):
@@ -127,31 +174,148 @@ def EnquiryPageview(request):
     booking_type = request.GET.get('booking_type')
     daily_trip_id = request.GET.get('daily_trip_id')
     car_request_id = request.GET.get('rental_car_id')
+    tour_package_id = request.GET.get('tour_package_id')
     selected_car = None
     selected_trip = None
-    # if request.method == "POST":
+    selected_tour = None
 
-    # name = request.POST.get('name')
-    # sender = request.POST.get('email_id')
-    # mobile = request.POST.get('phone')
-    # query = request.POST.get('message')
-    # recipients = ['darshanbajania1999@gmail.com']
-    # subject = "Website Inquiry"
-    # message = "hello testing"
-    # message = "Name: "+name + "\nEmail Id: "+ sender + "\nMobile No: "+ str(mobile) +"\nMessage: " + query
-    # send_mail(subject, message, 'darshanbajania1999@gmail.com', recipients)
+    if request.method == "POST":
+        print(request.POST.get('item-category'))
+
+        if request.POST.get('item-category') == 'rental-car':
+            car_model = request.POST.get('car_model')
+            location = request.POST.get('location')
+            date = request.POST.get('date')
+
+            name = request.POST.get('full-name')
+            sender = request.POST.get('email')
+            mobile = request.POST.get('phone-number')
+
+            recipients = ['darshanbajania1999@gmail.com']
+            subject = "Lakshmi Travels website Enquiry: Rental Car / Registered"
+            message = "hello testing"
+            message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
+                str(mobile) + "\n\nCar Model: "+car_model + \
+                "\nLocation: "+location + "\nDate: "+date
+            send_mail(subject, message,
+                      'darshanbajania1999@gmail.com', recipients)
+
+        elif request.POST.get('item-category') == 'daily-trip':
+
+            route = request.POST.get('route')
+            location = request.POST.get('date')
+            date = request.POST.get('location')
+
+            name = request.POST.get('full-name')
+            sender = request.POST.get('email')
+            mobile = request.POST.get('phone-number')
+
+            recipients = ['darshanbajania1999@gmail.com']
+            subject = "Lakshmi Travels website Enquiry: Daily Trip/ Registered"
+            message = "hello testing"
+            message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
+                str(mobile) + "\n\nRoute: "+route + \
+                "\nLocation: "+location + "\nDate: "+date
+            send_mail(subject, message,
+                      'darshanbajania1999@gmail.com', recipients)
+
+        elif request.POST.get('item-category') == 'tour-package':
+
+            destination = request.POST.get('destination')
+            journey_start = request.POST.get('journey-start')
+            journey_days = request.POST.get('days')
+            adults = request.POST.get('adults')
+            children = request.POST.get('children')
+            tour_details = request.POST.get('tour-details')
+            location = request.POST.get('location')
+            date = request.POST.get('date')
+
+            name = request.POST.get('full-name')
+            sender = request.POST.get('email')
+            mobile = request.POST.get('phone-number')
+
+            recipients = ['darshanbajania1999@gmail.com']
+            subject = "Lakshmi Travels website Enquiry: Tour Package / Registered"
+            message = "hello testing"
+            message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
+                str(mobile) + "\n\nDestination: "+destination + "\nJourney Start: "+journey_start + "\nJourney Days: "+journey_days + \
+                "\nAdults: "+adults + "\nChildren: "+children + "\nCutomer Requirements: " + \
+                tour_details + "\nLcation: "+location 
+            send_mail(subject, message,
+                      'darshanbajania1999@gmail.com', recipients)
+
+        else:
+            print("hello")
+            location = request.POST.get('location')
+            date = request.POST.get('date')
+
+
+            name = request.POST.get('full-name')
+            sender = request.POST.get('email')
+            mobile = request.POST.get('phone-number')
+
+
+            recipients = ['darshanbajania1999@gmail.com']
+            subject = "Lakshmi Travels website Enquiry: Rental Car"
+            message = "hello testing"
+            
+            
+            if request.POST.get('item-category') == 'daily-trip':
+                route = request.POST.get('route')
+                subject = "Lakshmi Travels website Enquiry: Rental Car / Registered"
+
+                message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
+                    str(mobile) + "\n\nRoute: "+route + \
+                    "\nLocation: "+location + "\nDate: "+date
+
+                send_mail(subject, message,
+                        'darshanbajania1999@gmail.com', recipients)
+            
+            elif request.POST.get('item-category') == 'rental-car':
+                car_model = request.POST.get('car_model')
+                subject = "Lakshmi Travels website Enquiry: Daily Trip/ Registered"
+
+                message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
+                    str(mobile) + "\n\nCar Model: "+car_model + \
+                    "\nLocation: "+location + "\nDate: "+date
+                send_mail(subject, message,
+                        'darshanbajania1999@gmail.com', recipients)
+            elif request.POST.get('item-category') == 'tour-package':
+
+                destination = request.POST.get('destination')
+                journey_start = request.POST.get('journey-start')
+                journey_days = request.POST.get('days')
+                adults = request.POST.get('adults')
+                children = request.POST.get('children')
+                tour_details = request.POST.get('tour-details')
+                subject = "Lakshmi Travels website Enquiry: Tour Package/ Unregistered"
+
+                message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
+                    str(mobile) + "\n\nDestination:  " + "\nAdults: "+adults + "\nAdults: "+adults + destination + "\nJourney Start: "+journey_start + "\nJourney Days: "+journey_days + \
+                    + "\nAdults: "+adults + "\nChildren: "+children + "\nCutomer Requirements: " + \
+                    tour_details + "\nLocation: "+location
+                send_mail(subject, message,
+                            'darshanbajania1999@gmail.com', recipients)
+
     if booking_type == 'rental_car':
         selected_car = RentalCars.objects.all().filter(car_id=car_request_id).first()
         if selected_car != None:
             booking_type = 'rental_car'
     elif booking_type == 'daily_trip':
-        selected_trip = TripDetails.objects.all().filter(trip_id=daily_trip_id).first()
+
+        selected_trip = TripDetails.objects.all().filter(id=daily_trip_id).first()
+
+    elif booking_type == 'tour_package':
+        selected_tour = TourPackageDetails.objects.all().filter(
+            tour_id=tour_package_id).first()
+        print(selected_tour)
 
     # print(booking_type, car_request_id, daily_trip_id)
     context = {
         'booking_type': booking_type,
         'selected_car': selected_car,
         'selected_trip': selected_trip,
+        'selected_tour': selected_tour,
     }
     return render(request, 'lakshmi_travels/enquiry_page.html', context)
 
@@ -249,13 +413,13 @@ def AdminDashBoardToursFormView(request):
             latest_id = TourPackageDetails.objects.all().order_by(
                 'tour_id').reverse().first().id
             print(latest_id)
-            new_tour = TourPackageDetails(tour_id=latest_id + 1, 
-                                    package_name=tour_name, 
-                                    summary=tour_summary,
-                                    duration=tour_duration, 
-                                    details=tour_details, 
-                                    tour_package_image=tour_image, 
-                                    availability_status=True)
+            new_tour = TourPackageDetails(tour_id=latest_id + 1,
+                                          package_name=tour_name,
+                                          summary=tour_summary,
+                                          duration=tour_duration,
+                                          details=tour_details,
+                                          tour_package_image=tour_image,
+                                          availability_status=True)
             new_tour.save()
 
     td_form = TripDetailsForm()

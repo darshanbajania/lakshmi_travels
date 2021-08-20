@@ -1,0 +1,65 @@
+{% extends 'lakshmi_travels/index.html' %}
+{% load static %}
+{% block heading%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" media="screen">
+
+    <link rel="stylesheet" href="{% static 'css/tour_details.css' %}" type="text/css" media="screen">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Tour Packages</title>
+</head>
+{% endblock heading%}
+{% block body%}
+
+<body>
+
+
+    {% block navigation %}
+    {{block.super}}
+    {% endblock navigation %}
+
+    <section>
+        <div class="tour-details">
+            <div class="heading-image">
+                <img src="{{selected_package.tour_package_image.url}}" alt="">
+            </div>
+
+            <div class="tour-details-body">
+                <h1>{{selected_package.package_name}}</h1>
+
+                <p>{{selected_package.summary}}</p>
+                <p>{{selected_package.duration}}</p>
+                <p>{{selected_package.details}}</p>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    {% block footer%}
+    {{ block.super }}
+    {% endblock footer%}
+
+
+</body>
+{% endblock body%}
+{% block jscript%}
+
+
+
+{% endblock jscript%}
+
+</html>

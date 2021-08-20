@@ -15,6 +15,7 @@ urlpatterns = [
     path('tour_packages/', views.TourPackagesView, name='tour_packages'),
     path('daily_trip/', views.DailyTripView, name='daily_trip'),
     path('enquiry/', views.EnquiryPageview, name='enquiry_page'),
+    path('tour_package_details/', views.TourPackageDetailsView, name='tour_package_details'),
 
 
     path('login/', views.LoginView, name='login_page'),
