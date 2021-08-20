@@ -247,7 +247,10 @@ def EnquiryPageview(request):
         else:
             print("hello")
             location = request.POST.get('location')
-            date = request.POST.get('date')
+            date_r = request.POST.get('date_r')
+            date_d = request.POST.get('date_d')
+
+            print(date_r, date_d)
 
 
             name = request.POST.get('full-name')
@@ -260,27 +263,27 @@ def EnquiryPageview(request):
             message = "hello testing"
             
             
-            if request.POST.get('item-category') == 'daily-trip':
+            if request.POST.get('enquiry-category') == 'daily-trip':
                 route = request.POST.get('route')
-                subject = "Lakshmi Travels website Enquiry: Rental Car / Registered"
+                subject = "Lakshmi Travels website Enquiry: Daily Trip/ Not Registered"
 
                 message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
                     str(mobile) + "\n\nRoute: "+route + \
-                    "\nLocation: "+location + "\nDate: "+date
+                    "\nLocation: "+location + "\nDate: "+ date_d
 
                 send_mail(subject, message,
                         'darshanbajania1999@gmail.com', recipients)
             
-            elif request.POST.get('item-category') == 'rental-car':
+            elif request.POST.get('enquiry-category') == 'rental-car':
                 car_model = request.POST.get('car_model')
-                subject = "Lakshmi Travels website Enquiry: Daily Trip/ Registered"
+                subject = "Lakshmi Travels website Enquiry: Rental Car/ Not Registered"
 
                 message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
                     str(mobile) + "\n\nCar Model: "+car_model + \
-                    "\nLocation: "+location + "\nDate: "+date
+                    "\nLocation: "+location + "\nDate: "+date_r
                 send_mail(subject, message,
                         'darshanbajania1999@gmail.com', recipients)
-            elif request.POST.get('item-category') == 'tour-package':
+            elif request.POST.get('enquiry-category') == 'tour-package':
 
                 destination = request.POST.get('destination')
                 journey_start = request.POST.get('journey-start')
@@ -288,7 +291,7 @@ def EnquiryPageview(request):
                 adults = request.POST.get('adults')
                 children = request.POST.get('children')
                 tour_details = request.POST.get('tour-details')
-                subject = "Lakshmi Travels website Enquiry: Tour Package/ Unregistered"
+                subject = "Lakshmi Travels website Enquiry: Tour Package/ Not registered"
 
                 message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
                     str(mobile) + "\n\nDestination:  " + "\nAdults: "+adults + "\nAdults: "+adults + destination + "\nJourney Start: "+journey_start + "\nJourney Days: "+journey_days + \

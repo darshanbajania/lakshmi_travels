@@ -141,57 +141,60 @@
                     <div class="col-md-4 rentalType">
                         <label for="inputCarModel" class="form-label">Car Model</label>
                         <input type="text" class="form-control" name="car_model" id="inputCarModel" 
-                            placeholder="Innova" required>
+                            placeholder="Innova" >
                     </div>
-                    <div class="col-md-4 tourType ">
-                        <label for="inputdestination" class="form-label">Destination</label>
-                        <input type="text" name="destination" class="form-control" id="inputdestination" placeholder="Jaipur, Rajasthan"
-                            required>
-                        <input type="hidden" name="enquiry-category" value="tour-package">
 
-                    </div>
                     <div class="col-md-4 dailyTripType">
                         <label for="inputroute" class="form-label">Route</label>
-                        <input type="text" name="route" class="form-control" id="inputroute" placeholder="Pune to Kerela" required>
+                        <input type="text" name="route" class="form-control" id="inputroute" placeholder="Pune to Kerela">
                         <input type="hidden" name="enquiry-category" value="daily-trip">
 
                     </div>
                     <div class="col-md-4 rentalType">
                         <label for="inputrentaldate" class="form-label">Date</label>
-                        <input type="date" name="date" class="form-control" id="inputrentaldate" required>
+                        <input type="date" name="date_r" class="form-control" id="inputrentaldate">
                         <input type="hidden" name="enquiry-category" value="rental-car">
 
                     </div>
                     <div class="col-md-4 dailyTripType">
                         <label for="inputdailytripdate" class="form-label">Date</label>
-                        <input type="date" name="date" class="form-control" id="inputdailytripdate" required>
+                        <input type="date" name="date_d" class="form-control" id="inputdailytripdate">
+                    </div>
+
+                    
+                    <div class="col-md-4 tourType ">
+                        <label for="inputdestination" class="form-label">Destination</label>
+                        <input type="text" name="destination" class="form-control" id="inputdestination" placeholder="Jaipur, Rajasthan"
+                            >
+                        <input type="hidden" name="enquiry-category" value="tour-package">
+
                     </div>
                     <div class="col-md-4 tourType">
                         <label for="inputstartdate" class="form-label">Journey Start</label>
-                        <input type="date" name="journey-start" class="form-control" id="inputstartdate" required>
+                        <input type="date" name="journey-start" class="form-control" id="inputstartdate">
                     </div>
                     <div class="col-md-4 tourType">
                         <label for="inputdays" class="form-label">Days</label>
-                        <input type="number" name="days" class="form-control" id="inputdays" placeholder="5" required>
+                        <input type="number" name="days" class="form-control" id="inputdays" placeholder="5">
                     </div>
                     <div class="col-md-4 tourType">
                         <label for="inputadults" class="form-label">Adults</label>
-                        <input type="number" name="adults" class="form-control" id="inputadults" placeholder="" required>
+                        <input type="number" name="adults" class="form-control" id="inputadults" placeholder="">
                     </div>
                     <div class="col-md-4 tourType">
                         <label for="inputchildren" class="form-label">Children</label>
-                        <input type="number" name="children" class="form-control" id="inputchildren" placeholder="" required>
+                        <input type="number" name="children" class="form-control" id="inputchildren" placeholder="">
                     </div>
 
                     <div class="col-md-4">
                         <label for="inputAddress" class="form-label">Your Location</label>
                         <input type="text" name="location" class="form-control" id="inputAddress" placeholder="Pune, Maharastra"
-                            required>
+                        >
                     </div>
                     <div class="col-12 tourType">
                         <label for="exampleFormControlTextarea1" class="form-label">Tour Details</label>
                         <textarea name="tour-details" class="form-control" id="exampleFormControlTextarea1" rows="3"
-                            placeholder="Please tell us your tour requirements"></textarea required>
+                            placeholder="Please tell us your tour requirements"></textarea>
                     </div>
                     {% endif %}
                     {% if user.is_authenticated %}
