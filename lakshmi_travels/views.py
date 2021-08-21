@@ -261,7 +261,8 @@ def EnquiryPageview(request):
             recipients = ['darshanbajania1999@gmail.com']
             subject = "Lakshmi Travels website Enquiry: Rental Car"
             message = "hello testing"
-            
+            print(request.POST.get('enquiry-category'))
+
             
             if request.POST.get('enquiry-category') == 'daily-trip':
                 route = request.POST.get('route')
@@ -270,6 +271,7 @@ def EnquiryPageview(request):
                 message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
                     str(mobile) + "\n\nRoute: "+route + \
                     "\nLocation: "+location + "\nDate: "+ date_d
+
 
                 send_mail(subject, message,
                         'darshanbajania1999@gmail.com', recipients)
@@ -295,7 +297,7 @@ def EnquiryPageview(request):
 
                 message = "Name: "+name + "\nEmail Id: " + sender + "\nMobile No: " + \
                     str(mobile) + "\n\nDestination:  " + "\nAdults: "+adults + "\nAdults: "+adults + destination + "\nJourney Start: "+journey_start + "\nJourney Days: "+journey_days + \
-                    + "\nAdults: "+adults + "\nChildren: "+children + "\nCutomer Requirements: " + \
+                    "\nAdults: "+adults + "\nChildren: "+children + "\nCutomer Requirements: " + \
                     tour_details + "\nLocation: "+location
                 send_mail(subject, message,
                             'darshanbajania1999@gmail.com', recipients)
