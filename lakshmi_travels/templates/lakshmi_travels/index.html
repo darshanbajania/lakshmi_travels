@@ -10,10 +10,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css" media="screen" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '872439750315662');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=872439750315662&ev=PageView&noscript=1" /></noscript>
   <title>Lakshmi Travels</title>
 </head>
 {% endblock heading%}
 {% block body%}
+
 <body>
   {% block navigation %}
   <header>
@@ -177,7 +195,7 @@
                 <div class="trip-timings-card">
                   <img src="{% static '/images/home_page/pune.jpg' %}" alt="" />
                   <div class="compartment">
-                  {% if trip.route == 'route1' %}
+                    {% if trip.route == 'route1' %}
                     <h3>Pune &rarr; Kerela</h3>
                     {% elif trip.route == 'route2' %}
                     <h3>Kerela &rarr; Pune</h3>
@@ -189,12 +207,12 @@
                     <p>{{ trip.trip_timings|time:"P" }}</p>
                   </div>
                   <div class="book-button">
-                  <form method="POST" action="">
-                    {% csrf_token %}
-                    <input type="hidden" name="trip_id" value="{{trip.trip_id}}">
-                    <button type="submit">Book</button>
+                    <form method="POST" action="">
+                      {% csrf_token %}
+                      <input type="hidden" name="trip_id" value="{{trip.trip_id}}">
+                      <button type="submit">Book</button>
 
-                  </form>
+                    </form>
                   </div>
                 </div>
                 {% endfor %}
@@ -213,7 +231,7 @@
     <div class="tour-packages-section">
       <h2>We also provide various Tour Packages</h2>
       <div class="tour-packages-list">
-      {% for package in all_tour_packages %}
+        {% for package in all_tour_packages %}
         <div class="tour-package-card">
           <img src="{{package.tour_package_image.url}}" alt="" />
           <h2>{{package.package_name}}</h2>
@@ -223,7 +241,7 @@
           <p class="time">{{package.duration}}</p>
 
           <div class="button-bar">
-            <div class="button-form" >
+            <div class="button-form">
               <form method="POST" action="">
                 {% csrf_token %}
                 <input type="hidden" name="tour_request_type" value="details">
@@ -231,7 +249,7 @@
                 <button type="submit" class="details">Details</button>
               </form>
             </div>
-            <div class="button-form" >
+            <div class="button-form">
               <form method="POST" action="">
                 {% csrf_token %}
                 <input type="hidden" name="tour_request_type" value="enquiry">
@@ -242,7 +260,7 @@
 
           </div>
         </div>
-      {% endfor %}
+        {% endfor %}
 
         <!-- <div class="tour-package-card">
           <img src="{% static 'images/home_page/manali_tour.jpg' %}" alt="" />
@@ -309,7 +327,7 @@
       </div>
     </div>
   </div>
-</section>
+  </section>
   <!-- contact form -->
   <section>
     <div class="home-contact_us">
@@ -351,44 +369,44 @@
   </section>
   <section>
 
-  {% block footer%}
-  <footer>
-    <div class="">
-      <img class="logo-img" src="{% static 'images/home_page/main_logo.jpeg' %}" alt="" />
-      <p>
-        &#9743; 9972457774 <br />
-        7356213451
-      </p>
-    </div>
+    {% block footer%}
+    <footer>
+      <div class="">
+        <img class="logo-img" src="{% static 'images/home_page/main_logo.jpeg' %}" alt="" />
+        <p>
+          &#9743; 9972457774 <br />
+          7356213451
+        </p>
+      </div>
 
-    <div>
-      <h3>Site Map</h3>
-      <ul>
-        <li><a href="{% url 'lakshmi_travels:home_view' %}"> Home</a></li>
-        <li>
-          <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trips</a>
-        </li>
-        <li>
-          <a href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry</a>
-        </li>
-        <li>
-          <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a>
-        </li>
-        <li><a href="">Contact Us</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Others</h3>
-      <ul>
-        <li><a href="">Popular Tours</a></li>
-        <li><a href="">All Tours</a></li>
-        <li><a href="">Featured</a></li>
-        <li><a href="">Prices</a></li>
-        <li><a href="">FAQ’s</a></li>
-      </ul>
-    </div>
-  </footer>
-  {% endblock footer%}
+      <div>
+        <h3>Site Map</h3>
+        <ul>
+          <li><a href="{% url 'lakshmi_travels:home_view' %}"> Home</a></li>
+          <li>
+            <a href="{% url 'lakshmi_travels:daily_trip' %}">Daily Trips</a>
+          </li>
+          <li>
+            <a href="{% url 'lakshmi_travels:enquiry_page' %}">Enquiry</a>
+          </li>
+          <li>
+            <a href="{% url 'lakshmi_travels:tour_packages' %}">Tour Packages</a>
+          </li>
+          <li><a href="">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Others</h3>
+        <ul>
+          <li><a href="">Popular Tours</a></li>
+          <li><a href="">All Tours</a></li>
+          <li><a href="">Featured</a></li>
+          <li><a href="">Prices</a></li>
+          <li><a href="">FAQ’s</a></li>
+        </ul>
+      </div>
+    </footer>
+    {% endblock footer%}
 </body>
 {% endblock body%}
 
@@ -418,4 +436,5 @@
   document.getElementById("defaultOpen").click();
 </script>
 {% endblock jscript%}
+
 </html>

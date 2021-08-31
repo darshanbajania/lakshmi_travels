@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&family=Roboto:wght@100;400;500;700;900&display=swap');
+
+:root{
+
+  /* colors */
+  --clr-white:white;
+  --clr-light:#8D8D8D;
+  --clr-medium:#4D4C4C;
+  --clr-dark:black;
+  --clr-cta:#FF0000;
+
+  --ft-content: 'Roboto', sans-serif;
+
+
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+.register-form-back{
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form-container{
+  width: 50%;
+  border: 1px solid black;
+  padding: 2em;
+}
+
+.register-form-container h1{
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+}
+
+.register-form-container label{
+  font-size: 1rem;
+  color: white;
+}
+
+
+.user_card {
+  width: 350px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+
+}
+
+.form_container {
+  margin-top: 20px;
+}
+
+#form-title{
+  color: #fff;
+  
+}
+
+.login_btn {
+  width: 100%;
+  background: var(--clr-cta) !important;
+  color: white !important;
+}
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.login_container {
+  padding: 0 2rem;
+}
+.input-group-text {
+  background: var(--clr-light) !important;
+  color: white !important;
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+.input_pass:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+} 
+
+#messages{
+  background-color: grey;
+  color: #fff;
+  padding: 10px;
+  margin-top: 10px;
+}

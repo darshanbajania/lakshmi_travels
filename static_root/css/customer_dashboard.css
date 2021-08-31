@@ -1,0 +1,87 @@
+.main-container{
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: space-between;
+}
+
+
+
+.sidebar{
+    width: 250px;
+    height: 100vh;
+    border:1px solid  var(--clr-light);
+    position: sticky;
+    top: 0;
+}
+
+.sidebar .heading{
+    padding: 1em;
+    padding-top: 2em;
+    background-color: rgb(224, 224, 224);
+    border-bottom: 1px solid var(--clr-medium);
+}
+
+.sidebar h2{
+    font-size: 1.8rem;
+}
+
+.sidebar .sidebar-body{
+    padding: 1em;
+}
+
+.sidebar .sidebar-body ul{
+    padding-left: 0;
+    list-style: none;
+}
+.sidebar .sidebar-body li{
+    margin: 1em 0;
+    width: 100%;
+}
+.sidebar .sidebar-body a{
+    display: block;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: .5em 1em;
+    font-size: 1em;
+    background-color: white;
+    color: var(--clr-light);
+}
+.sidebar .sidebar-body a:hover{
+    color: var(--clr-dark);
+}
+
+.main-content{
+    padding-top: 2em;
+    width: 80%;
+}
+.main-content .customer-info{
+    padding: 2em;
+}
+
+.main-content .info{
+    margin-top: 2em;
+    padding: 1em;
+    border: 1px solid var(--clr-light);
+    border-radius: 5px;
+}
+
+.trip_details_modify_form{
+    border-radius: 5px;
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgb(255, 220, 220);
+    padding: 1em;
+}
+
+/* .trip_details_modify_form button{
+    display: block;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: .5em 1em;
+    font-size: 1em;
+    background-color: white;
+    color: var(--clr-light); 
+} */

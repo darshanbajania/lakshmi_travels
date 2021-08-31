@@ -31,13 +31,14 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'lakshmi_travels',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'lakshmi_travels',
     'crispy_forms',
 
 ]
@@ -47,6 +48,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -129,10 +131,14 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # Here you tell django to look for a folder named 'assets'
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+VIEW_PATH = os.path.dirname(BASE_DIR)
+STATIC_ROOT = os.path.join(VIEW_PATH, 'mysite/static_root')
+
+print(STATIC_ROOT)
+
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 MEDIA_URL = '/media/'
 
 # Default primary key field type

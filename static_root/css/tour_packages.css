@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&family=Roboto:wght@100;400;500;700;900&display=swap');
+
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+:root{
+
+    /* colors */
+    --clr-white:white;
+    --clr-light:#8D8D8D;
+    --clr-medium:#4D4C4C;
+    --clr-dark:black;
+    --clr-cta:#FF0000;
+    --clr-book: #00E6E4;
+
+    --ft-content: 'Roboto', sans-serif;
+
+
+}
+
+.tp-hero-section{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+}
+
+.tp-hero-section picture{
+    width: 100%;
+
+}
+
+.tp-hero-section .text-content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    padding: 1em 2em;
+
+}
+
+.tp-hero-section .text-content h1{
+    font-size: 2rem;
+    color: white;
+    margin-top: 1em;
+    font-weight: 900;
+
+}
+
+.tp-hero-section .text-content p{
+    font-size: .8rem;
+    color: white;
+    margin-top: 2em;
+    font-weight: 300;
+    line-height: 16px;
+    width: 80%;
+
+}
+
+.tp-hero-section .text-content span{
+    font-weight: 500;
+}
+
+.tp-hero-section .text-content a{
+    background-color: var(--clr-cta);
+    text-decoration: none;
+    color: white;
+    padding: .5em 1em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow:0 4px 5px rgba(0, 0, 0, .25);
+    transition: 150ms ease-in;
+    margin-top: 1.5em;
+    display: inline-block;
+}
+
+.tp-hero-section .text-content a:hover{
+    background-color: #D10000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+}
+
+
+@media screen and (min-width:60em) {
+    .tp-hero-section .text-content {
+        width: 60%;
+        left: 20%;
+        padding: 0;
+    }
+
+    .tp-hero-section .text-content h1{
+        font-size: 3rem;
+        margin-top: 1.5em;
+    }
+
+    .tp-hero-section .text-content p{
+        font-size: 1rem;
+        font-weight: 400;
+        width: 50%;
+        line-height: 22px;
+    }
+    .tp-hero-section .text-content a{
+        font-size: 1.2rem;
+    }
+}
+
+.wonderful-journey{
+    margin: 5em 0;
+}
+
+
+.other-destinations{
+    margin-bottom: 4em;
+}
+
+.other-destinations h1{
+    text-align: center;
+    font-size: 1.8rem;
+
+}
+
+
+.how-it-works{
+    margin-bottom: 4em;
+}
+
+
+.booking-form {
+    margin: 4em 1em;
+}
+
+.booking-form h1{
+    font-size: 2rem;
+    margin: 2em 0;
+    padding-left: 1em
+}
+
+.booking-form .container{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .35);
+
+}
+
+.booking-form .container button{
+    display: block;
+    margin:0 auto;
+
+    background-color: var(--clr-cta);
+    color: white;
+    padding: .5em 1em;
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow:0 4px 5px rgba(0, 0, 0, .25);
+    transition: 150ms ease-in;
+    border: none;
+    margin-bottom: 2em;
+}
+
+.booking-form .container button:hover{
+    background-color: #D10000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+}
+
+@media screen and (min-width:60em) {
+    .booking-form {
+        width: 60%;
+        margin: 1em auto;
+    }
+
+    .booking-form h1{
+        font-size: 2rem;
+        margin: 2em 0;
+    }
+
+
+}
+
+
+.end-banner{
+    position: relative;
+    margin: 3em 0;
+    padding: 0;
+    height: fit-content;
+    width: 100%;
+}
+
+.end-banner picture{
+    width: 100%;
+
+}
+
+.end-banner .text-content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    padding: 1em 1.5em;
+
+}
+
+.end-banner .text-content h1{
+    font-size: 2rem;
+    color: white;
+    margin-top: .5em;
+    font-weight: 900;
+    text-transform: uppercase;
+
+}
+
+.end-banner .text-content p{
+    font-size: 1.4rem;
+    color: white;
+    margin-top: 1em;
+    font-weight: 400;
+    line-height: 20px;
+    width: 80%;
+
+}
+
+.end-banner .text-content span{
+    font-weight: 500;
+}
+
+.end-banner .text-content a{
+    background-color: var(--clr-cta);
+    text-decoration: none;
+    color: white;
+    padding: .5em 1em;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow:0 4px 5px rgba(0, 0, 0, .25);
+    transition: 150ms ease-in;
+    margin-top: 1em;
+    display: inline-block;
+}
+
+.end-banner .text-content a:hover{
+    background-color: #D10000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+}
+
+
+@media screen and (min-width:60em) {
+    .end-banner .text-content {
+        width: 60%;
+        left: 20%;
+        padding: 0;
+        text-align: center;
+    }
+
+    .end-banner .text-content h1{
+        font-size: 2.5rem;
+        margin-top: 2em;
+    }
+
+    .end-banner .text-content p{
+        font-size: 1.1rem;
+        font-weight: 500;
+        width: 100%;
+        line-height: 22px;
+        text-transform: uppercase;
+    }
+    .end-banner .text-content a{
+        font-size: 1.2rem;
+    }
+}

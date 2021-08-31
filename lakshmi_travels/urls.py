@@ -35,7 +35,7 @@ urlpatterns = [
     path('admin_dashboard/daily_trips/modify', views.AdminDashBoardDailyTripsFormView, name='admin_dashboard_daily_trip_form'),
 
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
